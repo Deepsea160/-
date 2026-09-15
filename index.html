@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#F7FAF9" />
+<meta name="theme-color" content="#5BA8E0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-title" content="工作台" />
@@ -13,17 +13,17 @@
 <title>工作台</title>
 <style>
 :root{
-  --mint:#2DB89A;
-  --mint-deep:#1FA588;
-  --mint-soft:#E5F7F3;
-  --mint-soft2:#D0F3EF;
-  --bg:#F5F7F8;
+  --blue:#5BA8E0;
+  --blue-deep:#3D8FC9;
+  --blue-soft:#E8F3FC;
+  --blue-soft2:#D4EAF8;
+  --bg:#F4F6F8;
   --card:#FFFFFF;
   --ink:#1C2124;
   --muted:#8A9399;
-  --line:#EEF1F2;
+  --line:#EEF1F3;
   --expense:#EF6B6B;
-  --income:#2DB89A;
+  --income:#3DBFA3;
   --warn:#E8A23A;
   --radius:16px;
   --shadow:0 2px 12px rgba(28,33,36,.05);
@@ -33,182 +33,103 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{
-  font-family:var(--font);
-  background:#E9EEF0;
-  color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  -webkit-tap-highlight-color:transparent;
-}
-#app{
-  max-width:430px;margin:0 auto;min-height:100%;
-  background:var(--bg);display:flex;flex-direction:column;
-  position:relative;
-}
-@media(min-width:480px){
-  #app{box-shadow:0 0 0 1px rgba(0,0,0,.06),0 20px 40px rgba(0,0,0,.08);min-height:100vh}
-  body{padding:0}
-}
-.topbar{
-  position:sticky;top:0;z-index:20;
-  padding:calc(12px + var(--safe-t)) 16px 10px;
-  background:rgba(245,247,248,.92);
-  backdrop-filter:blur(12px);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.topbar h1{margin:0;font-size:20px;font-weight:700;letter-spacing:.02em}
+body{font-family:var(--font);background:#E8ECF0;color:var(--ink);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+#app{max-width:430px;margin:0 auto;min-height:100%;background:var(--bg);display:flex;flex-direction:column;position:relative}
+@media(min-width:480px){#app{box-shadow:0 0 0 1px rgba(0,0,0,.06),0 20px 40px rgba(0,0,0,.08);min-height:100vh}}
+.topbar{position:sticky;top:0;z-index:20;padding:calc(12px + var(--safe-t)) 16px 10px;background:rgba(244,246,248,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between}
+.topbar h1{margin:0;font-size:20px;font-weight:700}
 .topbar .sub{font-size:12px;color:var(--muted);margin-top:2px}
-.icon-btn{
-  width:40px;height:40px;border:none;border-radius:12px;background:var(--card);
-  color:var(--muted);font-size:18px;cursor:pointer;box-shadow:var(--shadow);
-  display:grid;place-items:center
-}
+.icon-btn{width:40px;height:40px;border:none;border-radius:12px;background:var(--card);color:var(--muted);font-size:18px;cursor:pointer;box-shadow:var(--shadow);display:grid;place-items:center}
 .main{flex:1;padding:4px 14px calc(72px + var(--safe-b) + 12px);overflow-y:auto}
-.tabbar{
-  position:fixed;left:50%;transform:translateX(-50%);bottom:0;
-  width:min(430px,100%);height:calc(64px + var(--safe-b));
-  padding-bottom:var(--safe-b);
-  display:grid;grid-template-columns:repeat(4,1fr);
-  background:rgba(255,255,255,.96);backdrop-filter:blur(14px);
-  border-top:1px solid var(--line);z-index:30;
-}
-.tab{
-  border:none;background:transparent;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:3px;
-  color:var(--muted);font-size:11px;cursor:pointer;min-height:48px;font-family:inherit;
-}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(430px,100%);height:calc(64px + var(--safe-b));padding-bottom:var(--safe-b);display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);z-index:30}
+.tab{border:none;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:11px;cursor:pointer;min-height:48px;font-family:inherit}
 .tab .ico{font-size:18px;line-height:1}
-.tab.active{color:var(--mint);font-weight:600}
-.card{
-  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
-  padding:14px;margin-bottom:12px;border:1px solid transparent;
-}
-.card.mint{background:linear-gradient(145deg,var(--mint) 0%,#3CC9AB 100%);color:#fff;border:none}
-.card.mint .label{color:rgba(255,255,255,.85)}
-.card.mint .value{color:#fff}
+.tab.active{color:var(--blue);font-weight:600}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;margin-bottom:12px}
+.card.blue{background:linear-gradient(145deg,#6BB6E8 0%,#5BA8E0 55%,#4A9AD4 100%);color:#fff;border:none}
+.card.blue .k,.card.blue .label{color:rgba(255,255,255,.88)}
 .card h2{margin:0 0 10px;font-size:14px;font-weight:600;color:var(--muted)}
-.card.mint h2{color:rgba(255,255,255,.9)}
+.card.blue h2{color:rgba(255,255,255,.9)}
 .row{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 0;border-bottom:1px solid var(--line)}
 .row:last-child{border-bottom:none}
 .row .grow{flex:1;min-width:0}
 .row .title{font-size:15px;font-weight:500;word-break:break-word}
 .row .sub{font-size:12px;color:var(--muted);margin-top:2px}
-.btn{
-  appearance:none;border:none;background:var(--mint);color:#fff;
-  border-radius:12px;min-height:44px;padding:0 16px;font-size:14px;
-  font-family:inherit;font-weight:600;cursor:pointer
-}
+.btn{appearance:none;border:none;background:var(--blue);color:#fff;border-radius:12px;min-height:44px;padding:0 16px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer}
 .btn:active{transform:scale(.98)}
-.btn.ghost{background:var(--mint-soft);color:var(--mint-deep)}
+.btn.ghost{background:var(--blue-soft);color:var(--blue-deep)}
 .btn.plain{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
 .btn.danger{background:#FDECEC;color:var(--expense)}
 .btn.sm{min-height:36px;padding:0 12px;font-size:13px;border-radius:10px}
 .btn.block{width:100%}
-.field{
-  width:100%;min-height:44px;border:none;border-radius:12px;padding:12px 14px;
-  font-size:15px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none;
-}
-.field:focus{box-shadow:0 0 0 2px var(--mint-soft2)}
+.field{width:100%;min-height:44px;border:none;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none}
+.field:focus{box-shadow:0 0 0 2px var(--blue-soft2)}
 textarea.field{min-height:72px;resize:vertical}
 .quick-add{display:flex;gap:8px;margin-bottom:12px}
 .quick-add .field{flex:1}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.chip{
-  border:none;background:var(--card);color:var(--muted);border-radius:999px;
-  min-height:36px;padding:0 14px;font-size:13px;font-family:inherit;cursor:pointer;
-  box-shadow:var(--shadow)
-}
-.chip.active{background:var(--mint);color:#fff;font-weight:600}
-.seg{
-  display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;
-  background:var(--bg);padding:4px;border-radius:12px;margin-bottom:12px;
-}
-.seg button{
-  border:none;background:transparent;min-height:36px;border-radius:10px;
-  font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer
-}
+.chip{border:none;background:var(--card);color:var(--muted);border-radius:999px;min-height:36px;padding:0 14px;font-size:13px;font-family:inherit;cursor:pointer;box-shadow:var(--shadow)}
+.chip.active{background:var(--blue);color:#fff;font-weight:600}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;background:var(--bg);padding:4px;border-radius:12px;margin-bottom:12px}
+.seg button{border:none;background:transparent;min-height:36px;border-radius:10px;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer}
 .seg button.active{background:var(--card);color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .stat-grid.three{grid-template-columns:1fr 1fr 1fr}
-.stat{
-  background:var(--card);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow)
-}
+.stat{background:var(--card);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow)}
 .stat .label{font-size:12px;color:var(--muted)}
 .stat .value{font-size:20px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
 .stat .hint{font-size:11px;color:var(--muted);margin-top:2px}
 .progress{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:8px}
-.progress>i{display:block;height:100%;width:0;background:var(--mint);border-radius:inherit;transition:width .25s ease}
+.progress>i{display:block;height:100%;width:0;background:var(--blue);border-radius:inherit;transition:width .25s ease}
 .progress.expense>i{background:var(--expense)}
 .amount{font-variant-numeric:tabular-nums;font-weight:700}
 .amount.income{color:var(--income)}
 .amount.expense{color:var(--expense)}
 .empty{text-align:center;color:var(--muted);font-size:14px;padding:28px 12px}
-.modal-backdrop{
-  position:fixed;inset:0;background:rgba(28,33,36,.4);z-index:50;
-  display:grid;place-items:end center
-}
-.modal{
-  width:min(430px,100%);background:var(--bg);border-radius:20px 20px 0 0;
-  padding:16px 16px calc(16px + var(--safe-b));max-height:88vh;overflow:auto
-}
+.modal-backdrop{position:fixed;inset:0;background:rgba(28,33,36,.4);z-index:50;display:grid;place-items:end center}
+.modal{width:min(430px,100%);background:var(--bg);border-radius:20px 20px 0 0;padding:16px 16px calc(16px + var(--safe-b));max-height:88vh;overflow:auto}
 .modal h3{margin:0 0 12px;font-size:17px;font-weight:700}
 .form-row{margin-bottom:10px}
 .form-row label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
 .form-actions{display:flex;gap:8px;margin-top:14px}
 .form-actions .btn{flex:1}
 .hidden{display:none!important}
-.toast{
-  position:fixed;left:50%;bottom:calc(78px + var(--safe-b));transform:translateX(-50%);
-  background:rgba(28,33,36,.9);color:#fff;padding:10px 14px;border-radius:10px;
-  font-size:13px;z-index:100;opacity:0;pointer-events:none;transition:opacity .2s;
-  max-width:min(360px,90vw);text-align:center
-}
+.toast{position:fixed;left:50%;bottom:calc(78px + var(--safe-b));transform:translateX(-50%);background:rgba(28,33,36,.9);color:#fff;padding:10px 14px;border-radius:10px;font-size:13px;z-index:100;opacity:0;pointer-events:none;transition:opacity .2s;max-width:min(360px,90vw);text-align:center}
 .toast.show{opacity:1}
-.badge{
-  display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;
-  font-size:11px;background:var(--mint-soft);color:var(--mint-deep)
-}
-.cat-icon{
-  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
-  font-size:18px;flex-shrink:0
-}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:11px;background:var(--blue-soft);color:var(--blue-deep)}
+.cat-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
 .cat-food{background:#FFF1E8}.cat-transit{background:#EAF3FF}.cat-shop{background:#F5EEFF}
 .cat-home{background:#E8F8F3}.cat-fun{background:#FFEAF0}.cat-med{background:#FFF6E0}
-.cat-salary{background:#E5F7F3}.cat-other{background:#F0F2F4}.cat-debt{background:#FFF0E5}
+.cat-salary{background:#E8F3FC}.cat-other{background:#F0F2F4}.cat-debt{background:#FFF0E5}
 .month-bar{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
 .month-bar::-webkit-scrollbar{display:none}
 .month-bar .chip{flex:0 0 auto}
 .summary-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.summary-cell{
-  background:var(--mint);color:#fff;border-radius:14px;padding:12px 10px;text-align:center
-}
+.summary-cell{background:var(--blue);color:#fff;border-radius:14px;padding:12px 10px;text-align:center}
 .summary-cell .k{font-size:11px;opacity:.9}
 .summary-cell .v{font-size:15px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
-.day-head{
-  font-size:12px;color:var(--muted);margin:12px 0 6px;display:flex;justify-content:space-between
-}
+.day-head{font-size:12px;color:var(--muted);margin:12px 0 6px;display:flex;justify-content:space-between}
 .chart-wrap{position:relative;height:180px;margin-top:8px}
 .chart-wrap canvas{width:100%;height:100%;display:block}
 .skill-card .name{font-size:16px;font-weight:700}
 .skill-card .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
-.skill-card .pct{font-size:22px;font-weight:700;color:var(--mint);margin-top:8px}
-.settings-list .row{cursor:pointer}
-.settings-list .row:active{background:rgba(45,184,154,.06)}
-.divider{height:1px;background:var(--line);margin:10px 0}
-.check{
-  width:22px;height:22px;border-radius:50%;border:2px solid var(--line);
-  background:transparent;cursor:pointer;flex-shrink:0;display:grid;place-items:center;
-  padding:0;color:#fff;font-size:11px
-}
-.check.on{background:var(--mint);border-color:var(--mint)}
-.del-btn{
-  border:none;background:transparent;color:var(--muted);font-size:18px;
-  min-width:40px;min-height:40px;cursor:pointer
-}
-.list-group{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:4px 14px;margin-bottom:12px}
-.list-group .row{padding:12px 0}
-.sub-tabs{display:flex;gap:8px;margin-bottom:12px}
+.skill-card .pct{font-size:22px;font-weight:700;color:var(--blue);margin-top:8px}
+.sub-tabs{display:flex;gap:8px;margin-bottom:12px;align-items:center}
 .hint{font-size:12px;color:var(--muted);line-height:1.5}
+.list-group{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:4px 14px;margin-bottom:12px}
+.tri-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.tri-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:12px 8px;text-align:center}
+.tri-card .t{font-size:15px;font-weight:700;margin-bottom:6px}
+.tri-card .l{font-size:11px;color:var(--muted);line-height:1.5}
+.tri-card .l b{font-variant-numeric:tabular-nums}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.cal-cell{min-height:44px;border-radius:8px;background:var(--bg);padding:4px 2px;text-align:center;font-size:11px;color:var(--muted);cursor:pointer;border:2px solid transparent}
+.cal-cell.today{border-color:var(--blue)}
+.cal-cell.sel{background:var(--blue);color:#fff}
+.cal-cell .d{font-weight:600;color:var(--ink);font-size:12px}
+.cal-cell.sel .d{color:#fff}
+.cal-cell .m{margin-top:2px;font-size:9px}
+.cal-head{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:11px;color:var(--muted);margin-top:8px}
 </style>
 </head>
 <body>
@@ -228,278 +149,168 @@ textarea.field{min-height:72px;resize:vertical}
     <button class="tab" data-route="settings" type="button"><span class="ico">⚙</span><span>设置</span></button>
   </nav>
 </div>
-
 <script>
-/* ========== utils ========== */
-const STORES = ['skills','studyLogs','fitnessLogs','fitnessGoals','txns','installments','ledgers','meta'];
-const DATA_KEYS = ['skills','studyLogs','fitnessLogs','fitnessGoals','txns','installments','ledgers'];
-let _db = null;
-
-function uid(){ return Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9); }
-function todayStr(d=new Date()){
-  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
-  return y+'-'+m+'-'+day;
-}
-function monthStr(d=new Date()){ return todayStr(d).slice(0,7); }
-function parseAmount(v){ const n=Number(v); return Number.isFinite(n)?Math.round(n*100)/100:null; }
-function asNum(v,d=0){ const n=Number(v); return Number.isFinite(n)?n:d; }
-function asStr(v,d=''){ return typeof v==='string'?v:(v==null?d:String(v)); }
-function asId(v){
-  if(typeof v==='string'&&v) return v.slice(0,64);
-  if(typeof v==='number'&&Number.isFinite(v)) return String(v);
-  return null;
-}
-function asDateStr(v){
-  const s=asStr(v).slice(0,10);
-  return /^\d{4}-\d{2}-\d{2}$/.test(s)?s:'';
-}
-function escapeHtml(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
-function sumBy(list,fn){
-  return list.reduce((a,x)=>{ const n=Number(fn(x)); return a+(Number.isFinite(n)?n:0); },0);
-}
-function progressPct(cur, tgt){
-  const c=Number(cur), t=Number(tgt);
-  if(!Number.isFinite(c)||!Number.isFinite(t)||t<=0) return 0;
-  return Math.min(100, Math.round((c/t)*1000)/10);
-}
-function fmtMoney(n){ return (Number(n)||0).toFixed(2); }
-function daysBetween(a,b){
-  const da=new Date(a+'T00:00:00'), db=new Date(b+'T00:00:00');
-  return Math.round((db-da)/86400000);
-}
-function addDays(dateStr, n){
-  const d=new Date(dateStr+'T00:00:00'); d.setDate(d.getDate()+n); return todayStr(d);
-}
-
+/* ========== utils & db ========== */
+const STORES=['skills','studyLogs','fitnessLogs','fitnessGoals','txns','installments','ledgers','accounts','reimburses','invests','meta'];
+const DATA_KEYS=['skills','studyLogs','fitnessLogs','fitnessGoals','txns','installments','ledgers','accounts','reimburses','invests'];
+let _db=null;
+function uid(){return Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9)}
+function todayStr(d=new Date()){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return y+'-'+m+'-'+day}
+function monthStr(d=new Date()){return todayStr(d).slice(0,7)}
+function parseAmount(v){const n=Number(v);return Number.isFinite(n)?Math.round(n*100)/100:null}
+function asNum(v,d=0){const n=Number(v);return Number.isFinite(n)?n:d}
+function asStr(v,d=''){return typeof v==='string'?v:(v==null?d:String(v))}
+function asId(v){if(typeof v==='string'&&v)return v.slice(0,64);if(typeof v==='number'&&Number.isFinite(v))return String(v);return null}
+function asDateStr(v){const s=asStr(v).slice(0,10);return /^\d{4}-\d{2}-\d{2}$/.test(s)?s:''}
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function sumBy(list,fn){return list.reduce((a,x)=>{const n=Number(fn(x));return a+(Number.isFinite(n)?n:0)},0)}
+function progressPct(cur,tgt){const c=Number(cur),t=Number(tgt);if(!Number.isFinite(c)||!Number.isFinite(t)||t<=0)return 0;return Math.min(100,Math.round((c/t)*1000)/10)}
+function fmtMoney(n){return (Number(n)||0).toFixed(2)}
+function daysBetween(a,b){const da=new Date(a+'T00:00:00'),db=new Date(b+'T00:00:00');return Math.round((db-da)/86400000)}
+function addDays(dateStr,n){const d=new Date(dateStr+'T00:00:00');d.setDate(d.getDate()+n);return todayStr(d)}
 function openDB(){
-  if(_db) return Promise.resolve(_db);
+  if(_db)return Promise.resolve(_db);
   return new Promise((resolve,reject)=>{
-    const req=indexedDB.open('workbench',2);
+    const req=indexedDB.open('workbench',3);
     req.onupgradeneeded=()=>{
       const db=req.result;
-      const ensure=(name, idx)=>{
-        if(!db.objectStoreNames.contains(name)){
-          const s=db.createObjectStore(name,{keyPath:'id'});
-          (idx||[]).forEach(i=>s.createIndex(i,i));
-        }
-      };
-      ensure('skills',['name']);
-      ensure('studyLogs',['date','skillId']);
-      ensure('fitnessLogs',['date','name']);
-      ensure('fitnessGoals',[]);
-      ensure('txns',['date','kind']);
-      ensure('installments',[]);
-      ensure('ledgers',[]);
-      if(!db.objectStoreNames.contains('meta')) db.createObjectStore('meta',{keyPath:'key'});
+      const ensure=(name,idx)=>{if(!db.objectStoreNames.contains(name)){const s=db.createObjectStore(name,{keyPath:'id'});(idx||[]).forEach(i=>s.createIndex(i,i));}};
+      ensure('skills',['name']);ensure('studyLogs',['date','skillId']);ensure('fitnessLogs',['date','name']);
+      ensure('fitnessGoals',[]);ensure('txns',['date','kind']);ensure('installments',[]);ensure('ledgers',[]);
+      ensure('accounts',['name']);ensure('reimburses',['status']);ensure('invests',[]);
+      if(!db.objectStoreNames.contains('meta'))db.createObjectStore('meta',{keyPath:'key'});
     };
-    req.onsuccess=()=>{_db=req.result;resolve(_db);};
+    req.onsuccess=()=>{_db=req.result;resolve(_db)};
     req.onerror=()=>reject(req.error);
   });
 }
-function reqP(req){ return new Promise((res,rej)=>{req.onsuccess=()=>res(req.result);req.onerror=()=>rej(req.error);}); }
-async function getAll(store){ return reqP((await openDB()).transaction(store).objectStore(store).getAll()); }
-async function getById(store,id){ return reqP((await openDB()).transaction(store).objectStore(store).get(id)); }
-async function put(store,val){ return reqP((await openDB()).transaction(store,'readwrite').objectStore(store).put(val)); }
-async function del(store,id){ return reqP((await openDB()).transaction(store,'readwrite').objectStore(store).delete(id)); }
-async function clearStore(store){ return reqP((await openDB()).transaction(store,'readwrite').objectStore(store).clear()); }
-async function putMany(store,vals){
-  const s=(await openDB()).transaction(store,'readwrite').objectStore(store);
-  await Promise.all(vals.map(v=>reqP(s.put(v))));
-}
+function reqP(req){return new Promise((res,rej)=>{req.onsuccess=()=>res(req.result);req.onerror=()=>rej(req.error)})}
+async function getAll(store){return reqP((await openDB()).transaction(store).objectStore(store).getAll())}
+async function getById(store,id){return reqP((await openDB()).transaction(store).objectStore(store).get(id))}
+async function put(store,val){return reqP((await openDB()).transaction(store,'readwrite').objectStore(store).put(val))}
+async function del(store,id){return reqP((await openDB()).transaction(store,'readwrite').objectStore(store).delete(id))}
+async function clearStore(store){return reqP((await openDB()).transaction(store,'readwrite').objectStore(store).clear())}
+async function putMany(store,vals){const s=(await openDB()).transaction(store,'readwrite').objectStore(store);await Promise.all(vals.map(v=>reqP(s.put(v))))}
 function normalizeImport(key,item){
-  if(!item||typeof item!=='object') return null;
-  const id=asId(item.id); if(!id) return null;
+  if(!item||typeof item!=='object')return null;
+  const id=asId(item.id);if(!id)return null;
   switch(key){
-    case 'skills': return {
-      id, name:asStr(item.name).slice(0,40)||'技能',
-      color:asStr(item.color).slice(0,20)||'#2DB89A',
-      proficiency:Math.min(100,Math.max(0,asNum(item.proficiency,0))),
-      totalMinutes:Math.max(0,asNum(item.totalMinutes,0)),
-      streak:Math.max(0,Math.floor(asNum(item.streak,0))),
-      bestStreak:Math.max(0,Math.floor(asNum(item.bestStreak,0))),
-      lastStudyDate:asDateStr(item.lastStudyDate),
-      createdAt:asNum(item.createdAt,Date.now()),
-      note:asStr(item.note).slice(0,200)
-    };
-    case 'studyLogs': return {
-      id, skillId:asId(item.skillId)||'',
-      minutes:Math.max(1,Math.floor(asNum(item.minutes,1))),
-      date:asDateStr(item.date)||todayStr(),
-      createdAt:asNum(item.createdAt,Date.now()),
-      note:asStr(item.note).slice(0,200)
-    };
-    case 'fitnessLogs': return {
-      id, type:['reps','steps','custom'].includes(item.type)?item.type:'reps',
-      name:asStr(item.name).slice(0,50)||'记录',
-      value:asNum(item.value,0), unit:asStr(item.unit).slice(0,20)||'次',
-      date:asDateStr(item.date)||todayStr(),
-      createdAt:asNum(item.createdAt,Date.now()), note:asStr(item.note).slice(0,200)
-    };
-    case 'fitnessGoals': return {
-      id, scope:item.scope==='longterm'?'longterm':'daily',
-      name:asStr(item.name).slice(0,50)||'目标',
-      target:asNum(item.target,0), unit:asStr(item.unit).slice(0,20)||'次',
-      type:['reps','steps','custom'].includes(item.type)?item.type:'reps',
-      createdAt:asNum(item.createdAt,Date.now())
-    };
-    case 'txns': return {
-      id, kind:item.kind==='income'?'income':'expense',
-      amount:asNum(item.amount,0),
-      category:asStr(item.category).slice(0,30)||'其他',
-      account:asStr(item.account).slice(0,30)||'默认',
-      note:asStr(item.note).slice(0,100),
-      date:asDateStr(item.date)||todayStr(),
-      createdAt:asNum(item.createdAt,Date.now())
-    };
-    case 'installments': {
-      const totalAmount=asNum(item.totalAmount,0);
-      const totalCount=Math.max(1,Math.floor(asNum(item.totalCount,1)));
-      const paidCount=Math.min(totalCount,Math.max(0,Math.floor(asNum(item.paidCount,0))));
-      return {
-        id, title:asStr(item.title).slice(0,50)||'分期',
-        totalAmount, paidCount, totalCount,
-        monthlyAmount:asNum(item.monthlyAmount,0),
-        startDate:asDateStr(item.startDate)||todayStr(),
-        note:asStr(item.note).slice(0,200),
-        closed:!!item.closed||paidCount>=totalCount
-      };
-    }
-    case 'ledgers': {
-      const amount=asNum(item.amount,0);
-      const repaid=Math.min(amount,Math.max(0,asNum(item.repaid,0)));
-      return {
-        id, direction:item.direction==='lend'?'lend':'borrow',
-        party:asStr(item.party).slice(0,50)||'对方',
-        amount, date:asDateStr(item.date)||todayStr(),
-        dueDate:asDateStr(item.dueDate),
-        repaid, note:asStr(item.note).slice(0,200),
-        closed:!!item.closed||(amount>0&&repaid>=amount-0.001)
-      };
-    }
-    default: return null;
+    case 'skills':return{id,name:asStr(item.name).slice(0,40)||'技能',color:asStr(item.color)||'#5BA8E0',proficiency:Math.min(100,Math.max(0,asNum(item.proficiency,0))),totalMinutes:Math.max(0,asNum(item.totalMinutes,0)),streak:Math.max(0,Math.floor(asNum(item.streak,0))),bestStreak:Math.max(0,Math.floor(asNum(item.bestStreak,0))),lastStudyDate:asDateStr(item.lastStudyDate),createdAt:asNum(item.createdAt,Date.now()),note:asStr(item.note).slice(0,200)};
+    case 'studyLogs':return{id,skillId:asId(item.skillId)||'',minutes:Math.max(1,Math.floor(asNum(item.minutes,1))),date:asDateStr(item.date)||todayStr(),createdAt:asNum(item.createdAt,Date.now()),note:asStr(item.note).slice(0,200)};
+    case 'fitnessLogs':return{id,type:['reps','steps','custom'].includes(item.type)?item.type:'reps',name:asStr(item.name).slice(0,50)||'记录',value:asNum(item.value,0),unit:asStr(item.unit).slice(0,20)||'次',date:asDateStr(item.date)||todayStr(),createdAt:asNum(item.createdAt,Date.now()),note:asStr(item.note).slice(0,200)};
+    case 'fitnessGoals':return{id,scope:item.scope==='longterm'?'longterm':'daily',name:asStr(item.name).slice(0,50)||'目标',target:asNum(item.target,0),unit:asStr(item.unit).slice(0,20)||'次',type:['reps','steps','custom'].includes(item.type)?item.type:'reps',createdAt:asNum(item.createdAt,Date.now())};
+    case 'txns':return{id,kind:item.kind==='income'?'income':'expense',amount:asNum(item.amount,0),category:asStr(item.category).slice(0,30)||'其他',account:asStr(item.account).slice(0,30)||'默认',note:asStr(item.note).slice(0,100),date:asDateStr(item.date)||todayStr(),createdAt:asNum(item.createdAt,Date.now())};
+    case 'installments':{const totalAmount=asNum(item.totalAmount,0);const totalCount=Math.max(1,Math.floor(asNum(item.totalCount,1)));const paidCount=Math.min(totalCount,Math.max(0,Math.floor(asNum(item.paidCount,0))));return{id,title:asStr(item.title).slice(0,50)||'分期',totalAmount,paidCount,totalCount,monthlyAmount:asNum(item.monthlyAmount,0),startDate:asDateStr(item.startDate)||todayStr(),note:asStr(item.note).slice(0,200),closed:!!item.closed||paidCount>=totalCount}}
+    case 'ledgers':{const amount=asNum(item.amount,0);const repaid=Math.min(amount,Math.max(0,asNum(item.repaid,0)));return{id,direction:item.direction==='lend'?'lend':'borrow',party:asStr(item.party).slice(0,50)||'对方',amount,date:asDateStr(item.date)||todayStr(),dueDate:asDateStr(item.dueDate),repaid,note:asStr(item.note).slice(0,200),closed:!!item.closed||(amount>0&&repaid>=amount-0.001)}}
+    case 'accounts':return{id,name:asStr(item.name).slice(0,30)||'账户',icon:asStr(item.icon).slice(0,8)||'💳',balance:asNum(item.balance,0),type:asStr(item.type).slice(0,20)||'cash',order:asNum(item.order,0)};
+    case 'reimburses':return{id,title:asStr(item.title).slice(0,50)||'报销',amount:asNum(item.amount,0),status:['claimable','done'].includes(item.status)?item.status:'claimable',date:asDateStr(item.date)||todayStr(),note:asStr(item.note).slice(0,100),createdAt:asNum(item.createdAt,Date.now())};
+    case 'invests':return{id,name:asStr(item.name).slice(0,50)||'理财',amount:asNum(item.amount,0),pnl:asNum(item.pnl,0),note:asStr(item.note).slice(0,100),date:asDateStr(item.date)||todayStr(),createdAt:asNum(item.createdAt,Date.now())};
+    default:return null;
   }
 }
-async function exportAll(){
-  const pairs = await Promise.all(DATA_KEYS.map(k=>getAll(k)));
-  const data={}; DATA_KEYS.forEach((k,i)=>data[k]=pairs[i]);
-  return { schemaVersion:2, exportedAt:new Date().toISOString(), data };
-}
-async function importAll(payload, mode='merge'){
-  if(!payload||typeof payload!=='object') throw new Error('invalid');
-  if(![1,2].includes(payload.schemaVersion)||!payload.data||typeof payload.data!=='object') throw new Error('invalid');
+async function exportAll(){const pairs=await Promise.all(DATA_KEYS.map(k=>getAll(k)));const data={};DATA_KEYS.forEach((k,i)=>data[k]=pairs[i]);return{schemaVersion:3,exportedAt:new Date().toISOString(),data}}
+async function importAll(payload,mode='merge'){
+  if(!payload||typeof payload!=='object')throw new Error('invalid');
+  if(![1,2,3].includes(payload.schemaVersion)||!payload.data)throw new Error('invalid');
   const normalized={};
   for(const key of DATA_KEYS){
     const arr=Array.isArray(payload.data[key])?payload.data[key]:[];
     normalized[key]=arr.map(it=>normalizeImport(key,it)).filter(Boolean);
   }
-  if(mode==='overwrite'){ for(const key of DATA_KEYS) await clearStore(key); }
+  if(mode==='overwrite'){for(const key of DATA_KEYS)await clearStore(key)}
   for(const key of DATA_KEYS){
     const existing=mode==='merge'?await getAll(key):[];
     const map=new Map(existing.map(x=>[x.id,x]));
-    for(const it of normalized[key]) map.set(it.id,it);
+    for(const it of normalized[key])map.set(it.id,it);
     await putMany(key,[...map.values()]);
   }
 }
-async function wipeAll(){ for(const k of STORES) await clearStore(k); }
-
-/* ========== learning proficiency ========== */
-function calcStreak(logs, today){
+async function wipeAll(){for(const k of STORES)await clearStore(k)}
+async function seedDefaults(){
+  const accounts=await getAll('accounts');
+  if(!accounts.length){
+    const defaults=[
+      {id:uid(),name:'现金',icon:'💵',balance:0,type:'cash',order:0},
+      {id:uid(),name:'微信钱包',icon:'💬',balance:0,type:'wallet',order:1},
+      {id:uid(),name:'支付宝',icon:'🅰️',balance:0,type:'wallet',order:2},
+      {id:uid(),name:'银行卡',icon:'💳',balance:0,type:'bank',order:3}
+    ];
+    for(const a of defaults) await put('accounts',a);
+  }
+}
+function calcStreak(logs,today){
   const dates=[...new Set(logs.map(l=>l.date))].sort();
-  if(!dates.length) return 0;
+  if(!dates.length)return 0;
   const last=dates[dates.length-1];
-  if(last!==today && last!==addDays(today,-1)) return 0;
-  let streak=1, cursor=last;
-  const set=new Set(dates);
-  while(set.has(addDays(cursor,-1))){ streak++; cursor=addDays(cursor,-1); }
+  if(last!==today&&last!==addDays(today,-1))return 0;
+  let streak=1,cursor=last;const set=new Set(dates);
+  while(set.has(addDays(cursor,-1))){streak++;cursor=addDays(cursor,-1)}
   return streak;
 }
-function skillGain(minutes, streak){
+function skillGain(minutes,streak){
   const base=minutes/25;
-  const streakBonus=Math.min(2, streak*0.12);
+  const streakBonus=Math.min(2,streak*0.12);
   const dailyCap=6+streakBonus;
-  return Math.min(base+streakBonus*0.5, dailyCap);
+  return Math.min(base+streakBonus*0.5,dailyCap);
 }
 
-/* ========== App shell ========== */
+/* ========== App ========== */
 const App={
-  route:'learn',
-  main:null,
-  titles:{learn:'学习', fitness:'运动', finance:'账本', settings:'设置'},
+  route:'learn',main:null,
+  titles:{learn:'学习',fitness:'运动',finance:'账本',settings:'设置'},
   async init(){
     this.main=document.getElementById('main');
-    await openDB();
+    await openDB(); await seedDefaults();
     document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>this.navigate(t.dataset.route)));
     document.getElementById('btn-settings').addEventListener('click',()=>this.navigate('settings'));
     window.addEventListener('hashchange',()=>this.readHash());
-    this.readHash();
-    this.registerSW();
+    this.readHash(); this.registerSW();
   },
-  readHash(){
-    const h=(location.hash||'#/learn').replace(/^#\/?/,'')||'learn';
-    const route=['learn','fitness','finance','settings'].includes(h)?h:'learn';
-    this.navigate(route,true);
-  },
+  readHash(){const h=(location.hash||'#/learn').replace(/^#\/?/,'')||'learn';const route=['learn','fitness','finance','settings'].includes(h)?h:'learn';this.navigate(route,true)},
   navigate(route,skipHash){
     this.route=route;
-    if(!skipHash){ const next='#/'+route; if(location.hash!==next) history.replaceState(null,'',next); }
+    if(!skipHash){const next='#/'+route;if(location.hash!==next)history.replaceState(null,'',next)}
     document.getElementById('page-title').textContent=this.titles[route]||'工作台';
     document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.route===route));
     this.render();
   },
   async render(){
-    if(!this.main) return;
+    if(!this.main)return;
     try{
-      if(this.route==='learn') await LearnModule.render(this.main);
-      else if(this.route==='fitness') await FitnessModule.render(this.main);
-      else if(this.route==='finance') await FinanceModule.render(this.main);
+      if(this.route==='learn')await LearnModule.render(this.main);
+      else if(this.route==='fitness')await FitnessModule.render(this.main);
+      else if(this.route==='finance')await FinanceModule.render(this.main);
       else await SettingsModule.render(this.main);
-      document.getElementById('page-sub').textContent = this.route==='finance'?monthStr()+' · 一木风格': (this.route==='fitness'?'目标 · 记录 · 趋势': (this.route==='learn'?'技能熟练度 · 连续打卡':'本地数据 · 备份迁移'));
-    }catch(e){
-      console.error(e);
-      this.main.innerHTML='<div class="empty">加载失败，请刷新重试</div>';
-    }
+      const sub={learn:'技能熟练度 · 连续打卡',fitness:'目标 · 记录 · 趋势',finance:'一木风格 · 本地账本',settings:'本地数据 · 备份迁移'};
+      document.getElementById('page-sub').textContent=sub[this.route]||'';
+    }catch(e){console.error(e);this.main.innerHTML='<div class="empty">加载失败，请刷新重试</div>'}
   },
   toast(msg,ms=1800){
     let el=document.getElementById('toast');
-    if(!el){ el=document.createElement('div'); el.id='toast'; el.className='toast'; document.body.appendChild(el); }
-    el.textContent=msg; el.classList.add('show');
-    clearTimeout(this._tt); this._tt=setTimeout(()=>el.classList.remove('show'),ms);
+    if(!el){el=document.createElement('div');el.id='toast';el.className='toast';document.body.appendChild(el)}
+    el.textContent=msg;el.classList.add('show');
+    clearTimeout(this._tt);this._tt=setTimeout(()=>el.classList.remove('show'),ms);
   },
   openModal(html,onReady){
     this.closeModal();
-    const bd=document.createElement('div');
-    bd.className='modal-backdrop'; bd.id='modal-backdrop';
-    bd.innerHTML='<div class="modal">'+html+'</div>';
-    document.body.appendChild(bd);
-    bd.addEventListener('click',e=>{ if(e.target===bd) this.closeModal(); });
+    const bd=document.createElement('div');bd.className='modal-backdrop';bd.id='modal-backdrop';
+    bd.innerHTML='<div class="modal">'+html+'</div>';document.body.appendChild(bd);
+    bd.addEventListener('click',e=>{if(e.target===bd)this.closeModal()});
     bd.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>this.closeModal()));
-    if(onReady) onReady(bd.querySelector('.modal'));
+    if(onReady)onReady(bd.querySelector('.modal'));
   },
-  closeModal(){ const el=document.getElementById('modal-backdrop'); if(el) el.remove(); },
-  async safe(op,msg){
-    try{ return await op(); }
-    catch(e){ console.error(e); this.toast(msg||'保存失败'); throw e; }
-  },
-  registerSW(){
-    if(!('serviceWorker' in navigator)) return;
-    if(location.protocol!=='http:'&&location.protocol!=='https:') return;
-    navigator.serviceWorker.register('./sw.js').catch(()=>{});
-  }
+  closeModal(){const el=document.getElementById('modal-backdrop');if(el)el.remove()},
+  registerSW(){if(!('serviceWorker' in navigator))return;if(location.protocol!=='http:'&&location.protocol!=='https:')return;navigator.serviceWorker.register('./sw.js').catch(()=>{})}
 };
 
 /* ========== Learn ========== */
 const LearnModule={
-  filterSkill:null,
   async render(root){
-    const [skills, logs]=await Promise.all([getAll('skills'), getAll('studyLogs')]);
+    const [skills,logs]=await Promise.all([getAll('skills'),getAll('studyLogs')]);
     const today=todayStr();
     const todayLogs=logs.filter(l=>l.date===today);
     const todayMin=sumBy(todayLogs,l=>l.minutes);
     const weekMin=sumBy(logs.filter(l=>daysBetween(l.date,today)<7&&daysBetween(l.date,today)>=0),l=>l.minutes);
-
     root.innerHTML=`
       <div class="summary-row">
         <div class="summary-cell"><div class="k">今日学习</div><div class="v">${todayMin} 分</div></div>
@@ -508,24 +319,17 @@ const LearnModule={
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <h2 style="margin:0">我的技能</h2>
-          <button class="btn sm" id="add-skill" type="button">+ 新技能</button>
+          <h2 style="margin:0">我的技能</h2><button class="btn sm" id="add-skill" type="button">+ 新技能</button>
         </div>
         ${skills.length===0?'<div class="empty">先添加一个正在学的技能</div>':''}
         ${skills.map(s=>{
           const skillLogs=logs.filter(l=>l.skillId===s.id);
           const streak=calcStreak(skillLogs,today);
           const dayMin=sumBy(skillLogs.filter(l=>l.date===today),l=>l.minutes);
-          return `
-          <div class="card skill-card" style="margin-bottom:10px;box-shadow:none;background:var(--bg)">
+          return `<div class="card skill-card" style="margin-bottom:10px;box-shadow:none;background:var(--bg)">
             <div style="display:flex;justify-content:space-between;align-items:flex-start">
-              <div>
-                <div class="name">${escapeHtml(s.name)}</div>
-                <div class="meta">
-                  <span>连续 ${streak} 天 · 今日 ${dayMin} 分</span>
-                  <span>累计 ${Math.round(s.totalMinutes||0)} 分</span>
-                </div>
-              </div>
+              <div><div class="name">${escapeHtml(s.name)}</div>
+              <div class="meta"><span>连续 ${streak} 天 · 今日 ${dayMin} 分</span><span>累计 ${Math.round(s.totalMinutes||0)} 分</span></div></div>
               <div class="pct">${(s.proficiency||0).toFixed(1)}%</div>
             </div>
             <div class="progress"><i style="width:${s.proficiency||0}%"></i></div>
@@ -533,218 +337,123 @@ const LearnModule={
               <button class="btn sm ghost" data-study="${s.id}" type="button">记学习</button>
               <button class="btn sm plain" data-edit-skill="${s.id}" type="button">编辑</button>
               <button class="btn sm danger" data-del-skill="${s.id}" type="button">删除</button>
-            </div>
-          </div>`;
+            </div></div>`;
         }).join('')}
       </div>
-      <div class="card">
-        <h2>今日记录</h2>
+      <div class="card"><h2>今日记录</h2>
         ${todayLogs.length===0?'<div class="empty">今天还没开始学习</div>':todayLogs.slice().reverse().map(l=>{
           const sk=skills.find(s=>s.id===l.skillId);
-          return `<div class="row">
-            <div class="grow">
-              <div class="title">${escapeHtml(sk?sk.name:'未知技能')} · ${l.minutes} 分钟</div>
-              <div class="sub">${new Date(l.createdAt).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})}${l.note?' · '+escapeHtml(l.note):''}</div>
-            </div>
-            <button class="del-btn" data-del-log="${l.id}" type="button">×</button>
-          </div>`;
+          return `<div class="row"><div class="grow"><div class="title">${escapeHtml(sk?sk.name:'未知')} · ${l.minutes} 分钟</div>
+          <div class="sub">${new Date(l.createdAt).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})}</div></div>
+          <button class="del-btn" data-del-log="${l.id}" type="button">×</button></div>`;
         }).join('')}
       </div>
-      <div class="card">
-        <h2>近 7 天学习时长</h2>
-        <div class="chart-wrap"><canvas id="learn-chart" width="760" height="320"></canvas></div>
-      </div>
+      <div class="card"><h2>近 7 天学习时长</h2><div class="chart-wrap"><canvas id="learn-chart" width="760" height="320"></canvas></div></div>
     `;
-
     root.querySelector('#add-skill').addEventListener('click',()=>this.openSkillForm());
     root.querySelectorAll('[data-study]').forEach(b=>b.addEventListener('click',()=>this.openStudy(b.dataset.study)));
     root.querySelectorAll('[data-edit-skill]').forEach(b=>b.addEventListener('click',()=>this.openSkillForm(b.dataset.editSkill)));
     root.querySelectorAll('[data-del-skill]').forEach(b=>b.addEventListener('click',async()=>{
-      if(!confirm('删除该技能及其学习记录？')) return;
-      const id=b.dataset.delSkill;
-      await del('skills',id);
-      for(const l of (await getAll('studyLogs')).filter(x=>x.skillId===id)) await del('studyLogs',l.id);
-      App.toast('已删除'); App.render();
+      if(!confirm('删除该技能及其学习记录？'))return;
+      const id=b.dataset.delSkill;await del('skills',id);
+      for(const l of (await getAll('studyLogs')).filter(x=>x.skillId===id))await del('studyLogs',l.id);
+      App.toast('已删除');App.render();
     }));
-    root.querySelectorAll('[data-del-log]').forEach(b=>b.addEventListener('click',async()=>{
-      await del('studyLogs',b.dataset.delLog); App.render();
-    }));
-
-    this.drawChart(document.getElementById('learn-chart'), logs);
+    root.querySelectorAll('[data-del-log]').forEach(b=>b.addEventListener('click',async()=>{await del('studyLogs',b.dataset.delLog);App.render()}));
+    this.drawChart(document.getElementById('learn-chart'),logs);
   },
-  drawChart(canvas, logs){
-    if(!canvas) return;
-    const ctx=canvas.getContext('2d');
-    const w=canvas.width, h=canvas.height;
-    ctx.clearRect(0,0,w,h);
-    const days=[];
-    for(let i=6;i>=0;i--){ const d=addDays(todayStr(),-i); days.push({date:d, min:sumBy(logs.filter(l=>l.date===d),l=>l.minutes)}); }
-    const max=Math.max(30,...days.map(d=>d.min));
-    const padL=36,padR=10,padT=16,padB=28;
-    const cw=(w-padL-padR)/days.length;
-    ctx.fillStyle='#8A9399'; ctx.font='20px sans-serif';
+  drawChart(canvas,logs){
+    if(!canvas)return;const ctx=canvas.getContext('2d');const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
+    const days=[];for(let i=6;i>=0;i--){const d=addDays(todayStr(),-i);days.push({date:d,min:sumBy(logs.filter(l=>l.date===d),l=>l.minutes)})}
+    const max=Math.max(30,...days.map(d=>d.min));const padL=36,padR=10,padT=16,padB=28;const cw=(w-padL-padR)/days.length;
     days.forEach((d,i)=>{
-      const bh=(d.min/max)*(h-padT-padB);
-      const x=padL+i*cw+cw*0.25, y=h-padB-bh, bw=cw*0.5;
-      ctx.fillStyle='#2DB89A';
-      ctx.beginPath(); ctx.roundRect(x,y,bw,Math.max(4,bh),6); ctx.fill();
-      ctx.fillStyle='#8A9399'; ctx.font='18px sans-serif'; ctx.textAlign='center';
-      ctx.fillText(d.date.slice(5), x+bw/2, h-8);
-      if(d.min) { ctx.fillStyle='#1C2124'; ctx.fillText(String(d.min), x+bw/2, y-6); }
+      const bh=(d.min/max)*(h-padT-padB);const x=padL+i*cw+cw*0.25,y=h-padB-bh,bw=cw*0.5;
+      ctx.fillStyle='#5BA8E0';ctx.beginPath();ctx.roundRect(x,y,bw,Math.max(4,bh),6);ctx.fill();
+      ctx.fillStyle='#8A9399';ctx.font='18px sans-serif';ctx.textAlign='center';ctx.fillText(d.date.slice(5),x+bw/2,h-8);
+      if(d.min){ctx.fillStyle='#1C2124';ctx.fillText(String(d.min),x+bw/2,y-6)}
     });
   },
   openSkillForm(id){
     const isEdit=!!id;
-    App.openModal(`
-      <h3>${isEdit?'编辑技能':'新建技能'}</h3>
-      <div class="form-row"><label>名称</label><input class="field" id="sk-name" placeholder="如：英语 / Python / 吉他" maxlength="20" /></div>
-      <div class="form-row"><label>备注</label><input class="field" id="sk-note" placeholder="可选" maxlength="50" /></div>
+    App.openModal(`<h3>${isEdit?'编辑技能':'新建技能'}</h3>
+      <div class="form-row"><label>名称</label><input class="field" id="sk-name" maxlength="20" placeholder="如：英语 / Python / 吉他" /></div>
+      <div class="form-row"><label>备注</label><input class="field" id="sk-note" maxlength="50" placeholder="可选" /></div>
       ${isEdit?'<div class="form-row"><label>熟练度校正 %</label><input class="field" id="sk-prof" type="number" min="0" max="100" step="0.1" /></div>':''}
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="sk-save" type="button">保存</button>
-      </div>
-    `, async (modal)=>{
-      if(isEdit){
-        const s=await getById('skills',id);
-        if(s){ modal.querySelector('#sk-name').value=s.name; modal.querySelector('#sk-note').value=s.note||''; modal.querySelector('#sk-prof').value=s.proficiency; }
-      }
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="sk-save" type="button">保存</button></div>
+    `,async modal=>{
+      if(isEdit){const s=await getById('skills',id);if(s){modal.querySelector('#sk-name').value=s.name;modal.querySelector('#sk-note').value=s.note||'';modal.querySelector('#sk-prof').value=s.proficiency}}
       modal.querySelector('#sk-save').addEventListener('click',async()=>{
-        const name=modal.querySelector('#sk-name').value.trim();
-        if(!name) return App.toast('请输入技能名称');
-        if(isEdit){
-          const s=await getById('skills',id);
-          s.name=name; s.note=modal.querySelector('#sk-note').value.trim();
-          const p=DBp(modal.querySelector('#sk-prof').value); if(p!==null) s.proficiency=Math.min(100,Math.max(0,p));
-          await put('skills',s);
-        }else{
-          await put('skills',{
-            id:uid(), name, color:'#2DB89A', proficiency:0, totalMinutes:0,
-            streak:0, bestStreak:0, lastStudyDate:'', createdAt:Date.now(),
-            note:modal.querySelector('#sk-note').value.trim()
-          });
-        }
-        App.closeModal(); App.toast('已保存'); App.render();
+        const name=modal.querySelector('#sk-name').value.trim();if(!name)return App.toast('请输入技能名称');
+        if(isEdit){const s=await getById('skills',id);s.name=name;s.note=modal.querySelector('#sk-note').value.trim();
+          const p=parseAmount(modal.querySelector('#sk-prof').value);if(p!==null)s.proficiency=Math.min(100,Math.max(0,p));await put('skills',s)}
+        else await put('skills',{id:uid(),name,color:'#5BA8E0',proficiency:0,totalMinutes:0,streak:0,bestStreak:0,lastStudyDate:'',createdAt:Date.now(),note:modal.querySelector('#sk-note').value.trim()});
+        App.closeModal();App.toast('已保存');App.render();
       });
     });
   },
   openStudy(skillId){
-    App.openModal(`
-      <h3>记录学习</h3>
+    App.openModal(`<h3>记录学习</h3>
       <div class="form-row"><label>时长（分钟）</label><input class="field" id="st-min" type="number" inputmode="numeric" min="1" max="600" value="30" /></div>
-      <div class="chips" id="st-quick">
-        ${[15,25,30,45,60,90].map(m=>`<button class="chip" data-m="${m}" type="button">${m}分</button>`).join('')}
-      </div>
-      <div class="form-row"><label>备注</label><input class="field" id="st-note" placeholder="可选" maxlength="50" /></div>
+      <div class="chips" id="st-quick">${[15,25,30,45,60,90].map(m=>`<button class="chip" data-m="${m}" type="button">${m}分</button>`).join('')}</div>
+      <div class="form-row"><label>备注</label><input class="field" id="st-note" maxlength="50" placeholder="可选" /></div>
       <div class="hint" id="st-preview"></div>
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="st-save" type="button">保存并增加熟练度</button>
-      </div>
-    `, async (modal)=>{
-      const skill=await getById('skills',skillId);
-      if(!skill){ App.toast('技能不存在'); App.closeModal(); return; }
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="st-save" type="button">保存并增加熟练度</button></div>
+    `,async modal=>{
+      const skill=await getById('skills',skillId);if(!skill){App.toast('技能不存在');App.closeModal();return}
       const minEl=modal.querySelector('#st-min');
       const updatePreview=async()=>{
         const logs=(await getAll('studyLogs')).filter(l=>l.skillId===skillId);
-        const streak=calcStreak(logs, todayStr());
-        const minutes=asNum(minEl.value,0);
-        const gain=skillGain(minutes, Math.max(streak,1));
-        const next=Math.min(100,(skill.proficiency||0)+gain);
+        const streak=calcStreak(logs,todayStr());const minutes=asNum(minEl.value,0);
+        const gain=skillGain(minutes,Math.max(streak,1));const next=Math.min(100,(skill.proficiency||0)+gain);
         modal.querySelector('#st-preview').textContent=`预计熟练度 ${(skill.proficiency||0).toFixed(1)}% → ${next.toFixed(1)}%（+${gain.toFixed(2)}）`;
       };
-      minEl.addEventListener('input',updatePreview);
-      await updatePreview();
-      modal.querySelectorAll('#st-quick .chip').forEach(c=>c.addEventListener('click',()=>{
-        minEl.value=c.dataset.m; updatePreview();
-      }));
+      minEl.addEventListener('input',updatePreview);await updatePreview();
+      modal.querySelectorAll('#st-quick .chip').forEach(c=>c.addEventListener('click',()=>{minEl.value=c.dataset.m;updatePreview()}));
       modal.querySelector('#st-save').addEventListener('click',async()=>{
-        const minutes=Math.floor(asNum(minEl.value,0));
-        if(minutes<1) return App.toast('请输入有效时长');
-        const today=todayStr();
-        const logs=(await getAll('studyLogs')).filter(l=>l.skillId===skillId);
+        const minutes=Math.floor(asNum(minEl.value,0));if(minutes<1)return App.toast('请输入有效时长');
+        const today=todayStr();const logs=(await getAll('studyLogs')).filter(l=>l.skillId===skillId);
         const hadToday=logs.some(l=>l.date===today);
-        const streakForGain=Math.max(1, calcStreak(hadToday?logs:[...logs,{date:today}], today));
-        const gain=skillGain(minutes, streakForGain);
-        await put('studyLogs',{ id:uid(), skillId, minutes, date:today, createdAt:Date.now(), note:modal.querySelector('#st-note').value.trim() });
+        const streakForGain=Math.max(1,calcStreak(hadToday?logs:[...logs,{date:today}],today));
+        const gain=skillGain(minutes,streakForGain);
+        await put('studyLogs',{id:uid(),skillId,minutes,date:today,createdAt:Date.now(),note:modal.querySelector('#st-note').value.trim()});
         skill.totalMinutes=asNum(skill.totalMinutes,0)+minutes;
-        skill.proficiency=Math.min(100, asNum(skill.proficiency,0)+gain);
-        skill.streak=streakForGain;
-        skill.bestStreak=Math.max(asNum(skill.bestStreak,0), streakForGain);
-        skill.lastStudyDate=today;
-        await put('skills', skill);
-        App.closeModal();
-        App.toast(`熟练度 +${gain.toFixed(2)}%`);
-        App.render();
+        skill.proficiency=Math.min(100,asNum(skill.proficiency,0)+gain);
+        skill.streak=streakForGain;skill.bestStreak=Math.max(asNum(skill.bestStreak,0),streakForGain);skill.lastStudyDate=today;
+        await put('skills',skill);App.closeModal();App.toast(`熟练度 +${gain.toFixed(2)}%`);App.render();
       });
     });
   }
 };
-function DBp(v){ return parseAmount(v); }
 
-/* ========== Fitness ========== */
+/* ========== Fitness（长期目标在底部） ========== */
 const FitnessModule={
-  chartMode:'bar',
+  chartMode:'bar',metric:'steps',
   async render(root){
-    const [logs, goals]=await Promise.all([getAll('fitnessLogs'), getAll('fitnessGoals')]);
-    const today=todayStr();
-    const todayLogs=logs.filter(l=>l.date===today);
-    const dailyGoals=goals.filter(g=>g.scope==='daily');
-    const longGoals=goals.filter(g=>g.scope==='longterm');
-
+    const [logs,goals]=await Promise.all([getAll('fitnessLogs'),getAll('fitnessGoals')]);
+    const today=todayStr();const todayLogs=logs.filter(l=>l.date===today);
+    const dailyGoals=goals.filter(g=>g.scope==='daily');const longGoals=goals.filter(g=>g.scope==='longterm');
     const todaySteps=sumBy(todayLogs.filter(l=>l.type==='steps'),l=>l.value);
     const allSteps=sumBy(logs.filter(l=>l.type==='steps'),l=>l.value);
-    const stepsGoal=dailyGoals.find(g=>g.type==='steps');
-    const stepsLong=longGoals.find(g=>g.type==='steps');
-
-    const repsToday=todayLogs.filter(l=>l.type==='reps');
-    const grouped={};
-    for(const l of repsToday){
-      const key=l.name+'|'+l.unit;
-      if(!grouped[key]) grouped[key]={name:l.name,unit:l.unit,value:0};
-      grouped[key].value+=asNum(l.value,0);
-    }
+    const stepsGoal=dailyGoals.find(g=>g.type==='steps');const stepsLong=longGoals.find(g=>g.type==='steps');
+    const repsToday=todayLogs.filter(l=>l.type==='reps');const grouped={};
+    for(const l of repsToday){const key=l.name+'|'+l.unit;if(!grouped[key])grouped[key]={name:l.name,unit:l.unit,value:0};grouped[key].value+=asNum(l.value,0)}
     const repsGroups=Object.values(grouped);
-
     root.innerHTML=`
-      <!-- 目标区 -->
-      <div class="card mint">
+      <div class="card blue">
         <h2>今日目标</h2>
         <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px">
           <span>步数</span><span>${todaySteps.toLocaleString()}${stepsGoal?' / '+Number(stepsGoal.target).toLocaleString():''}</span>
         </div>
         <div class="progress" style="background:rgba(255,255,255,.25)"><i style="width:${stepsGoal?progressPct(todaySteps,stepsGoal.target):0}%;background:#fff"></i></div>
-        <div class="divider" style="background:rgba(255,255,255,.2)"></div>
-        ${repsGroups.length===0?'<div style="font-size:13px;opacity:.85">今日动作目标完成情况见下方</div>':repsGroups.map(g=>{
+        <div style="height:1px;background:rgba(255,255,255,.2);margin:10px 0"></div>
+        ${repsGroups.length===0?'<div style="font-size:13px;opacity:.85">记一组动作后这里会显示进度</div>':repsGroups.map(g=>{
           const goal=dailyGoals.find(x=>x.name===g.name&&x.unit===g.unit&&x.type==='reps');
           const pct=goal?progressPct(g.value,goal.target):null;
-          return `<div style="margin-top:8px">
-            <div style="display:flex;justify-content:space-between;font-size:13px"><span>${escapeHtml(g.name)}</span><span>${g.value}${escapeHtml(g.unit)}${goal?' / '+goal.target:''}</span></div>
-            <div class="progress" style="background:rgba(255,255,255,.25);height:6px"><i style="width:${pct||0}%;background:#fff"></i></div>
-          </div>`;
+          return `<div style="margin-top:8px"><div style="display:flex;justify-content:space-between;font-size:13px">
+            <span>${escapeHtml(g.name)}</span><span>${g.value}${escapeHtml(g.unit)}${goal?' / '+goal.target:''}</span></div>
+            <div class="progress" style="background:rgba(255,255,255,.25);height:6px"><i style="width:${pct||0}%;background:#fff"></i></div></div>`;
         }).join('')}
       </div>
-
-      <div class="card">
-        <h2>长期目标</h2>
-        <div class="row" style="border:none;padding-top:0">
-          <div class="grow">
-            <div class="title">步数累计 ${allSteps.toLocaleString()}${stepsLong?' / '+Number(stepsLong.target).toLocaleString():''}</div>
-            <div class="progress"><i style="width:${stepsLong?progressPct(allSteps,stepsLong.target):0}%"></i></div>
-          </div>
-        </div>
-        ${longGoals.filter(g=>g.type!=='steps').map(g=>{
-          const allFor=sumBy(logs.filter(l=>l.type==='reps'&&l.name===g.name&&l.unit===g.unit),l=>l.value);
-          const pct=progressPct(allFor,g.target);
-          return `<div class="row"><div class="grow">
-            <div class="title">${escapeHtml(g.name)} ${allFor} / ${g.target} ${escapeHtml(g.unit)}</div>
-            <div class="progress"><i style="width:${pct}%"></i></div>
-          </div></div>`;
-        }).join('')}
-        <button class="btn ghost block" id="open-goal" type="button" style="margin-top:8px">管理目标</button>
-      </div>
-
-      <!-- 快速记录 -->
       <div class="card">
         <h2>快速记录</h2>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
@@ -758,8 +467,6 @@ const FitnessModule={
           <button class="btn" id="save-steps" type="button">记步数</button>
         </div>
       </div>
-
-      <!-- 图表 -->
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
           <h2 style="margin:0">趋势</h2>
@@ -769,216 +476,138 @@ const FitnessModule={
           </div>
         </div>
         <div class="chips" id="metric-pick">
-          <button class="chip active" data-metric="steps" type="button">步数</button>
-          <button class="chip" data-metric="reps" type="button">动作总量</button>
+          <button class="chip ${this.metric==='steps'?'active':''}" data-metric="steps" type="button">步数</button>
+          <button class="chip ${this.metric==='reps'?'active':''}" data-metric="reps" type="button">动作总量</button>
         </div>
         <div class="chart-wrap"><canvas id="fit-chart" width="760" height="320"></canvas></div>
       </div>
-
-      <!-- 今日明细 -->
       <div class="card">
         <h2>今日明细</h2>
         ${todayLogs.length===0?'<div class="empty">暂无</div>':todayLogs.slice().reverse().map(l=>`
-          <div class="row">
-            <div class="grow">
-              <div class="title">${escapeHtml(l.name)} · ${l.value} ${escapeHtml(l.unit)}</div>
-              <div class="sub">${new Date(l.createdAt).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})}</div>
-            </div>
-            <button class="del-btn" data-del-log="${l.id}" type="button">×</button>
-          </div>
-        `).join('')}
+          <div class="row"><div class="grow"><div class="title">${escapeHtml(l.name)} · ${l.value} ${escapeHtml(l.unit)}</div>
+          <div class="sub">${new Date(l.createdAt).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})}</div></div>
+          <button class="del-btn" data-del-log="${l.id}" type="button">×</button></div>`).join('')}
+      </div>
+      <div class="card">
+        <h2>长期目标</h2>
+        <div class="row" style="border:none;padding-top:0"><div class="grow">
+          <div class="title">步数累计 ${allSteps.toLocaleString()}${stepsLong?' / '+Number(stepsLong.target).toLocaleString():''}</div>
+          <div class="progress"><i style="width:${stepsLong?progressPct(allSteps,stepsLong.target):0}%"></i></div>
+        </div></div>
+        ${longGoals.filter(g=>g.type!=='steps').map(g=>{
+          const allFor=sumBy(logs.filter(l=>l.type==='reps'&&l.name===g.name&&l.unit===g.unit),l=>l.value);
+          return `<div class="row"><div class="grow">
+            <div class="title">${escapeHtml(g.name)} ${allFor} / ${g.target} ${escapeHtml(g.unit)}</div>
+            <div class="progress"><i style="width:${progressPct(allFor,g.target)}%"></i></div>
+          </div></div>`;
+        }).join('')}
+        <button class="btn ghost block" id="open-goal" type="button" style="margin-top:8px">管理目标</button>
       </div>
     `;
-
     root.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',async()=>{
       const [name,value,unit]=b.dataset.preset.split('|');
       await put('fitnessLogs',{id:uid(),type:'reps',name,value:Number(value),unit,date:today,createdAt:Date.now(),note:''});
-      App.toast(`已记 ${name} +${value}`); App.render();
+      App.toast(`已记 ${name} +${value}`);App.render();
     }));
     root.querySelector('#open-custom').addEventListener('click',()=>this.openCustom());
     root.querySelector('#open-goal').addEventListener('click',()=>this.openGoal());
     root.querySelector('#save-steps').addEventListener('click',async()=>{
       const v=parseAmount(root.querySelector('#steps-input').value);
-      if(v===null||v<0) return App.toast('请输入有效步数');
-      const existing=(await getAll('fitnessLogs')).filter(l=>l.type==='steps'&&l.date===today);
-      for(const e of existing) await del('fitnessLogs',e.id);
+      if(v===null||v<0)return App.toast('请输入有效步数');
+      for(const e of (await getAll('fitnessLogs')).filter(l=>l.type==='steps'&&l.date===today))await del('fitnessLogs',e.id);
       await put('fitnessLogs',{id:uid(),type:'steps',name:'步数',value:v,unit:'步',date:today,createdAt:Date.now(),note:''});
-      App.toast('步数已保存'); App.render();
+      App.toast('步数已保存');App.render();
     });
-    root.querySelectorAll('[data-del-log]').forEach(b=>b.addEventListener('click',async()=>{
-      await del('fitnessLogs',b.dataset.delLog); App.render();
-    }));
-    root.querySelectorAll('[data-cm]').forEach(b=>b.addEventListener('click',()=>{
-      this.chartMode=b.dataset.cm; App.render();
-    }));
-
-    let metric='steps';
-    root.querySelectorAll('[data-metric]').forEach(b=>b.addEventListener('click',()=>{
-      metric=b.dataset.metric;
-      root.querySelectorAll('[data-metric]').forEach(x=>x.classList.toggle('active',x===b));
-      this.drawChart(document.getElementById('fit-chart'), logs, metric, this.chartMode);
-    }));
-    this.drawChart(document.getElementById('fit-chart'), logs, metric, this.chartMode);
-
+    root.querySelectorAll('[data-del-log]').forEach(b=>b.addEventListener('click',async()=>{await del('fitnessLogs',b.dataset.delLog);App.render()}));
+    root.querySelectorAll('[data-cm]').forEach(b=>b.addEventListener('click',()=>{this.chartMode=b.dataset.cm;App.render()}));
+    root.querySelectorAll('[data-metric]').forEach(b=>b.addEventListener('click',()=>{this.metric=b.dataset.metric;App.render()}));
+    this.drawChart(document.getElementById('fit-chart'),logs,this.metric,this.chartMode);
     const stepsToday=todayLogs.filter(l=>l.type==='steps');
-    if(stepsToday.length) root.querySelector('#steps-input').value=sumBy(stepsToday,l=>l.value);
+    if(stepsToday.length)root.querySelector('#steps-input').value=sumBy(stepsToday,l=>l.value);
   },
-  drawChart(canvas, logs, metric, mode){
-    if(!canvas) return;
-    const ctx=canvas.getContext('2d');
-    const w=canvas.width,h=canvas.height;
-    ctx.clearRect(0,0,w,h);
-    const days=[];
-    for(let i=13;i>=0;i--){
-      const d=addDays(todayStr(),-i);
-      const dayLogs=logs.filter(l=>l.date===d);
-      let val=0;
-      if(metric==='steps') val=sumBy(dayLogs.filter(l=>l.type==='steps'),l=>l.value);
-      else val=sumBy(dayLogs.filter(l=>l.type==='reps'),l=>l.value);
-      days.push({date:d,val});
-    }
-    const max=Math.max(1,...days.map(d=>d.val));
-    const padL=40,padR=12,padT=20,padB=32;
-    const plotW=w-padL-padR, plotH=h-padT-padB;
-    if(mode==='bar'){
-      const cw=plotW/days.length;
-      days.forEach((d,i)=>{
-        const bh=(d.val/max)*plotH;
-        const x=padL+i*cw+cw*0.2, y=padT+plotH-bh, bw=cw*0.6;
-        ctx.fillStyle='#2DB89A';
-        ctx.beginPath(); ctx.roundRect(x,y,bw,Math.max(3,bh),4); ctx.fill();
-        if(i%2===0){ ctx.fillStyle='#8A9399'; ctx.font='16px sans-serif'; ctx.textAlign='center';
-          ctx.fillText(d.date.slice(8), x+bw/2, h-10); }
-      });
-    }else{
-      ctx.strokeStyle='#2DB89A'; ctx.lineWidth=4; ctx.lineJoin='round'; ctx.beginPath();
-      days.forEach((d,i)=>{
-        const x=padL+(i/(days.length-1))*plotW;
-        const y=padT+plotH-(d.val/max)*plotH;
-        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-      });
-      ctx.stroke();
-      days.forEach((d,i)=>{
-        const x=padL+(i/(days.length-1))*plotW;
-        const y=padT+plotH-(d.val/max)*plotH;
-        ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(x,y,5,0,Math.PI*2); ctx.fill();
-        ctx.strokeStyle='#2DB89A'; ctx.lineWidth=3; ctx.stroke();
-        if(i%3===0){ ctx.fillStyle='#8A9399'; ctx.font='16px sans-serif'; ctx.textAlign='center';
-          ctx.fillText(d.date.slice(5), x, h-10); }
-      });
-    }
-    ctx.fillStyle='#8A9399'; ctx.font='16px sans-serif'; ctx.textAlign='right';
-    ctx.fillText(String(Math.round(max)), padL-6, padT+12);
+  drawChart(canvas,logs,metric,mode){
+    if(!canvas)return;const ctx=canvas.getContext('2d');const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
+    const days=[];for(let i=13;i>=0;i--){const d=addDays(todayStr(),-i);const dayLogs=logs.filter(l=>l.date===d);
+      const val=metric==='steps'?sumBy(dayLogs.filter(l=>l.type==='steps'),l=>l.value):sumBy(dayLogs.filter(l=>l.type==='reps'),l=>l.value);
+      days.push({date:d,val})}
+    const max=Math.max(1,...days.map(d=>d.val));const padL=40,padR=12,padT=20,padB=32;const plotW=w-padL-padR,plotH=h-padT-padB;
+    if(mode==='bar'){const cw=plotW/days.length;days.forEach((d,i)=>{const bh=(d.val/max)*plotH;const x=padL+i*cw+cw*0.2,y=padT+plotH-bh,bw=cw*0.6;
+      ctx.fillStyle='#5BA8E0';ctx.beginPath();ctx.roundRect(x,y,bw,Math.max(3,bh),4);ctx.fill();
+      if(i%2===0){ctx.fillStyle='#8A9399';ctx.font='16px sans-serif';ctx.textAlign='center';ctx.fillText(d.date.slice(8),x+bw/2,h-10)}})}
+    else{ctx.strokeStyle='#5BA8E0';ctx.lineWidth=4;ctx.lineJoin='round';ctx.beginPath();
+      days.forEach((d,i)=>{const x=padL+(i/(days.length-1))*plotW;const y=padT+plotH-(d.val/max)*plotH;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();
+      days.forEach((d,i)=>{const x=padL+(i/(days.length-1))*plotW;const y=padT+plotH-(d.val/max)*plotH;
+        ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#5BA8E0';ctx.lineWidth=3;ctx.stroke();
+        if(i%3===0){ctx.fillStyle='#8A9399';ctx.font='16px sans-serif';ctx.textAlign='center';ctx.fillText(d.date.slice(5),x,h-10)}})}
+    ctx.fillStyle='#8A9399';ctx.font='16px sans-serif';ctx.textAlign='right';ctx.fillText(String(Math.round(max)),padL-6,padT+12);
   },
   openCustom(){
-    App.openModal(`
-      <h3>自定义动作</h3>
+    App.openModal(`<h3>自定义动作</h3>
       <div class="form-row"><label>名称</label><input class="field" id="f-name" placeholder="如：波比跳" /></div>
       <div class="form-row"><label>数量</label><input class="field" id="f-val" type="number" inputmode="decimal" min="0" /></div>
       <div class="form-row"><label>单位</label><input class="field" id="f-unit" value="次" /></div>
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="f-save" type="button">保存</button>
-      </div>
-    `,(modal)=>{
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="f-save" type="button">保存</button></div>
+    `,modal=>{
       modal.querySelector('#f-save').addEventListener('click',async()=>{
-        const name=modal.querySelector('#f-name').value.trim();
-        const val=parseAmount(modal.querySelector('#f-val').value);
-        const unit=modal.querySelector('#f-unit').value.trim()||'次';
-        if(!name||val===null||val<=0) return App.toast('请填写完整');
+        const name=modal.querySelector('#f-name').value.trim();const val=parseAmount(modal.querySelector('#f-val').value);const unit=modal.querySelector('#f-unit').value.trim()||'次';
+        if(!name||val===null||val<=0)return App.toast('请填写完整');
         await put('fitnessLogs',{id:uid(),type:'reps',name,value:val,unit,date:todayStr(),createdAt:Date.now(),note:''});
-        App.closeModal(); App.toast('已记录'); App.render();
+        App.closeModal();App.toast('已记录');App.render();
       });
     });
   },
   openGoal(){
-    App.openModal(`
-      <h3>设置目标</h3>
-      <div class="form-row"><label>类型</label>
-        <select class="field" id="g-type"><option value="steps">步数</option><option value="reps">次数动作</option></select>
-      </div>
+    App.openModal(`<h3>设置目标</h3>
+      <div class="form-row"><label>类型</label><select class="field" id="g-type"><option value="steps">步数</option><option value="reps">次数动作</option></select></div>
       <div class="form-row"><label>名称</label><input class="field" id="g-name" placeholder="步数或动作名" /></div>
       <div class="form-row"><label>目标值</label><input class="field" id="g-target" type="number" inputmode="numeric" min="1" /></div>
       <div class="form-row"><label>单位</label><input class="field" id="g-unit" value="次" /></div>
-      <div class="form-row"><label>范围</label>
-        <select class="field" id="g-scope"><option value="daily">今日目标</option><option value="longterm">长期目标</option></select>
-      </div>
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="g-save" type="button">保存</button>
-      </div>
-      <div class="divider"></div>
-      <div id="goal-list"></div>
-    `,(modal)=>{
-      const typeSel=modal.querySelector('#g-type');
-      const nameEl=modal.querySelector('#g-name');
-      const unitEl=modal.querySelector('#g-unit');
-      typeSel.addEventListener('change',()=>{
-        if(typeSel.value==='steps'){ nameEl.value='步数'; unitEl.value='步'; }
-        else { if(nameEl.value==='步数') nameEl.value=''; unitEl.value='次'; }
-      });
+      <div class="form-row"><label>范围</label><select class="field" id="g-scope"><option value="daily">今日目标</option><option value="longterm">长期目标</option></select></div>
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="g-save" type="button">保存</button></div>
+      <div style="height:10px"></div><div id="goal-list"></div>
+    `,async modal=>{
+      const typeSel=modal.querySelector('#g-type'),nameEl=modal.querySelector('#g-name'),unitEl=modal.querySelector('#g-unit');
+      typeSel.addEventListener('change',()=>{if(typeSel.value==='steps'){nameEl.value='步数';unitEl.value='步'}else{if(nameEl.value==='步数')nameEl.value='';unitEl.value='次'}});
       const refresh=async()=>{
         const goals=await getAll('fitnessGoals');
         modal.querySelector('#goal-list').innerHTML=goals.length===0?'<div class="empty">暂无目标</div>':goals.map(g=>`
-          <div class="row"><div class="grow">
-            <div class="title">${escapeHtml(g.name)} · ${g.target} ${escapeHtml(g.unit)}</div>
-            <div class="sub">${g.scope==='daily'?'今日':'长期'}</div>
-          </div><button class="del-btn" data-gdel="${g.id}" type="button">×</button></div>
-        `).join('');
-        modal.querySelectorAll('[data-gdel]').forEach(b=>b.addEventListener('click',async()=>{
-          await del('fitnessGoals',b.dataset.gdel); await refresh();
-        }));
-      };
-      refresh();
+          <div class="row"><div class="grow"><div class="title">${escapeHtml(g.name)} · ${g.target} ${escapeHtml(g.unit)}</div>
+          <div class="sub">${g.scope==='daily'?'今日':'长期'}</div></div>
+          <button class="del-btn" data-gdel="${g.id}" type="button">×</button></div>`).join('');
+        modal.querySelectorAll('[data-gdel]').forEach(b=>b.addEventListener('click',async()=>{await del('fitnessGoals',b.dataset.gdel);await refresh()}));
+      };await refresh();
       modal.querySelector('#g-save').addEventListener('click',async()=>{
-        const type=typeSel.value;
-        const name=nameEl.value.trim()||(type==='steps'?'步数':'');
+        const type=typeSel.value;const name=nameEl.value.trim()||(type==='steps'?'步数':'');
         const target=parseAmount(modal.querySelector('#g-target').value);
-        const unit=unitEl.value.trim()||(type==='steps'?'步':'次');
-        const scope=modal.querySelector('#g-scope').value;
-        if(!name||!target||target<=0) return App.toast('请填写完整');
-        const goals=await getAll('fitnessGoals');
-        for(const g of goals) if(g.scope===scope&&g.type===type&&g.name===name&&g.unit===unit) await del('fitnessGoals',g.id);
+        const unit=unitEl.value.trim()||(type==='steps'?'步':'次');const scope=modal.querySelector('#g-scope').value;
+        if(!name||!target||target<=0)return App.toast('请填写完整');
+        for(const g of await getAll('fitnessGoals'))if(g.scope===scope&&g.type===type&&g.name===name&&g.unit===unit)await del('fitnessGoals',g.id);
         await put('fitnessGoals',{id:uid(),scope,name,target,unit,type,createdAt:Date.now()});
-        App.toast('目标已保存'); await refresh();
+        App.toast('目标已保存');await refresh();
       });
     });
   }
 };
 
-/* ========== Finance (一木风格) ========== */
+/* ========== Finance 一木风格 ========== */
 const CAT_META={
-  '餐饮':{ico:'🍜',cls:'cat-food'},
-  '交通':{ico:'🚇',cls:'cat-transit'},
-  '购物':{ico:'🛍️',cls:'cat-shop'},
-  '居住':{ico:'🏠',cls:'cat-home'},
-  '娱乐':{ico:'🎮',cls:'cat-fun'},
-  '医疗':{ico:'💊',cls:'cat-med'},
-  '工资':{ico:'💼',cls:'cat-salary'},
-  '奖金':{ico:'🎁',cls:'cat-salary'},
-  '其他':{ico:'•',cls:'cat-other'},
-  '分期':{ico:'📅',cls:'cat-debt'},
-  '借贷':{ico:'🤝',cls:'cat-debt'}
+  '餐饮':{ico:'🍜',cls:'cat-food'},'交通':{ico:'🚇',cls:'cat-transit'},'购物':{ico:'🛍️',cls:'cat-shop'},
+  '居住':{ico:'🏠',cls:'cat-home'},'娱乐':{ico:'🎮',cls:'cat-fun'},'医疗':{ico:'💊',cls:'cat-med'},
+  '工资':{ico:'💼',cls:'cat-salary'},'奖金':{ico:'🎁',cls:'cat-salary'},'其他':{ico:'•',cls:'cat-other'}
 };
-function catMeta(c){ return CAT_META[c]||CAT_META['其他']; }
-
+function catMeta(c){return CAT_META[c]||CAT_META['其他']}
 const FinanceModule={
-  tab:'txns',
-  month:monthStr(),
+  tab:'txns',month:monthStr(),calDate:todayStr(),statKind:'expense',statRange:'month',
   async render(root){
-    const [txns, installments, ledgers]=await Promise.all([getAll('txns'),getAll('installments'),getAll('ledgers')]);
+    const [txns,installments,ledgers,accounts,reimburses,invests]=await Promise.all([
+      getAll('txns'),getAll('installments'),getAll('ledgers'),getAll('accounts'),getAll('reimburses'),getAll('invests')
+    ]);
     const m=this.month;
     const monthTx=txns.filter(t=>(t.date||'').startsWith(m));
     const income=sumBy(monthTx.filter(t=>t.kind==='income'),t=>t.amount);
     const expense=sumBy(monthTx.filter(t=>t.kind==='expense'),t=>t.amount);
     const balance=income-expense;
-
-    const months=[];
-    for(let i=0;i<6;i++){
-      const d=new Date(); d.setDate(1); d.setMonth(d.getMonth()-i);
-      months.push(monthStr(d));
-    }
-
+    const months=[];for(let i=0;i<6;i++){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-i);months.push(monthStr(d))}
     root.innerHTML=`
       <div class="month-bar">
         ${months.map(mm=>`<button class="chip ${mm===m?'active':''}" data-month="${mm}" type="button">${mm.slice(5)}月</button>`).join('')}
@@ -990,221 +619,344 @@ const FinanceModule={
       </div>
       <div class="sub-tabs">
         <div class="chips" style="margin:0;flex:1">
-          ${[['txns','流水'],['install','分期'],['ledger','借贷'],['stat','统计']].map(([k,l])=>
+          ${[['txns','流水'],['calendar','日历'],['assets','资产'],['stat','统计']].map(([k,l])=>
             `<button class="chip ${this.tab===k?'active':''}" data-ftab="${k}" type="button">${l}</button>`).join('')}
         </div>
-        <button class="btn" id="open-txn" type="button">记一笔</button>
+        <button class="btn sm" id="open-txn" type="button">记一笔</button>
       </div>
       ${this.tab==='txns'?this.txnsHTML(txns,m):''}
-      ${this.tab==='install'?this.installHTML(installments):''}
-      ${this.tab==='ledger'?this.ledgerHTML(ledgers):''}
-      ${this.tab==='stat'?this.statHTML(monthTx):''}
+      ${this.tab==='calendar'?this.calHTML(txns):''}
+      ${this.tab==='assets'?this.assetsHTML({accounts,reimburses,invests,installments,ledgers}):''}
+      ${this.tab==='stat'?this.statHTML(monthTx,m):''}
     `;
-
-    root.querySelectorAll('[data-month]').forEach(b=>b.addEventListener('click',()=>{ this.month=b.dataset.month; App.render(); }));
-    root.querySelectorAll('[data-ftab]').forEach(b=>b.addEventListener('click',()=>{ this.tab=b.dataset.ftab; App.render(); }));
+    root.querySelectorAll('[data-month]').forEach(b=>b.addEventListener('click',()=>{this.month=b.dataset.month;App.render()}));
+    root.querySelectorAll('[data-ftab]').forEach(b=>b.addEventListener('click',()=>{this.tab=b.dataset.ftab;App.render()}));
     root.querySelector('#open-txn').addEventListener('click',()=>this.openTxn());
-    const ai=root.querySelector('#add-install'); if(ai) ai.addEventListener('click',()=>this.openInstall());
-    const al=root.querySelector('#add-ledger'); if(al) al.addEventListener('click',()=>this.openLedger());
-    root.querySelectorAll('[data-pay-one]').forEach(b=>b.addEventListener('click',async()=>{
-      const item=await getById('installments',b.dataset.payOne);
-      if(!item||item.closed) return;
-      item.paidCount=Math.min(item.totalCount,(item.paidCount||0)+1);
-      if(item.paidCount>=item.totalCount) item.closed=true;
-      await put('installments',item); App.toast('已记 1 期'); App.render();
-    }));
-    root.querySelectorAll('[data-repay]').forEach(b=>b.addEventListener('click',async()=>{
-      const item=await getById('ledgers',b.dataset.repay); if(!item) return;
-      const rest=Math.max(0,item.amount-(item.repaid||0));
-      const v=prompt('还款/收款金额（剩余 ¥'+rest.toFixed(2)+'）', String(rest));
-      if(v===null) return;
-      const amount=parseAmount(v); if(amount===null||amount<0) return App.toast('金额无效');
-      item.repaid=Math.min(item.amount,(item.repaid||0)+amount);
-      if(item.repaid>=item.amount-0.001) item.closed=true;
-      await put('ledgers',item); App.toast('已更新'); App.render();
-    }));
+    this.bindCommon(root);
+    if(this.tab==='calendar')this.bindCal(root,txns);
+    if(this.tab==='assets')this.bindAssets(root);
+    if(this.tab==='stat')this.drawStat(root,txns);
+  },
+  bindCommon(root){
     root.querySelectorAll('[data-del-finance]').forEach(b=>b.addEventListener('click',async()=>{
-      if(!confirm('确认删除？')) return;
-      await del(b.dataset.store,b.dataset.delFinance); App.render();
-    }));
+      if(!confirm('确认删除？'))return;await del(b.dataset.store,b.dataset.delFinance);App.render()}));
+    root.querySelectorAll('[data-pay-one]').forEach(b=>b.addEventListener('click',async()=>{
+      const item=await getById('installments',b.dataset.payOne);if(!item||item.closed)return;
+      item.paidCount=Math.min(item.totalCount,(item.paidCount||0)+1);
+      if(item.paidCount>=item.totalCount)item.closed=true;
+      await put('installments',item);App.toast('已记 1 期');App.render()}));
+    root.querySelectorAll('[data-repay]').forEach(b=>b.addEventListener('click',async()=>{
+      const item=await getById('ledgers',b.dataset.repay);if(!item)return;
+      const rest=Math.max(0,item.amount-(item.repaid||0));
+      const v=prompt('还款/收款金额（剩余 ¥'+rest.toFixed(2)+'）',String(rest));if(v===null)return;
+      const amount=parseAmount(v);if(amount===null||amount<0)return App.toast('金额无效');
+      item.repaid=Math.min(item.amount,(item.repaid||0)+amount);
+      if(item.repaid>=item.amount-0.001)item.closed=true;
+      await put('ledgers',item);App.toast('已更新');App.render()}));
+    root.querySelectorAll('[data-settle-reimb]').forEach(b=>b.addEventListener('click',async()=>{
+      const r=await getById('reimburses',b.dataset.settleReimb);if(!r||r.status==='done')return;
+      r.status='done';await put('reimburses',r);App.toast('已标记已报');App.render()}));
   },
   txnsHTML(txns,m){
     const monthTx=txns.filter(t=>(t.date||'').startsWith(m)).sort((a,b)=>{
-      if(a.date===b.date) return (b.createdAt||0)-(a.createdAt||0);
-      return (b.date||'').localeCompare(a.date||'');
-    });
-    if(!monthTx.length) return '<div class="card"><div class="empty">本月还没有账目</div></div>';
-    const byDay={};
-    monthTx.forEach(t=>{ (byDay[t.date]=byDay[t.date]||[]).push(t); });
+      if(a.date===b.date)return(b.createdAt||0)-(a.createdAt||0);return(b.date||'').localeCompare(a.date||'')});
+    if(!monthTx.length)return'<div class="card"><div class="empty">本月还没有账目</div></div>';
+    const byDay={};monthTx.forEach(t=>{(byDay[t.date]=byDay[t.date]||[]).push(t)});
     return Object.keys(byDay).sort().reverse().map(date=>{
       const list=byDay[date];
       const dayIn=sumBy(list.filter(t=>t.kind==='income'),t=>t.amount);
       const dayOut=sumBy(list.filter(t=>t.kind==='expense'),t=>t.amount);
-      return `<div class="list-group">
+      return`<div class="list-group">
         <div class="day-head" style="padding:10px 0 0"><span>${date}</span><span>收 ${fmtMoney(dayIn)} · 支 ${fmtMoney(dayOut)}</span></div>
-        ${list.map(t=>{
-          const cm=catMeta(t.category);
-          return `<div class="row">
-            <div class="cat-icon ${cm.cls}">${cm.ico}</div>
-            <div class="grow">
-              <div class="title">${escapeHtml(t.category)}</div>
-              <div class="sub">${escapeHtml(t.note||t.account||'')}</div>
-            </div>
-            <div class="amount ${t.kind}" style="margin-right:4px">${t.kind==='income'?'+':'-'}${fmtMoney(t.amount)}</div>
-            <button class="del-btn" data-del-finance="${t.id}" data-store="txns" type="button">×</button>
-          </div>`;
-        }).join('')}
-      </div>`;
-    }).join('');
+        ${list.map(t=>{const cm=catMeta(t.category);return`<div class="row">
+          <div class="cat-icon ${cm.cls}">${cm.ico}</div>
+          <div class="grow"><div class="title">${escapeHtml(t.category)}</div><div class="sub">${escapeHtml(t.note||t.account||'')}</div></div>
+          <div class="amount ${t.kind}" style="margin-right:4px">${t.kind==='income'?'+':'-'}${fmtMoney(t.amount)}</div>
+          <button class="del-btn" data-del-finance="${t.id}" data-store="txns" type="button">×</button></div>`}).join('')}
+      </div>`}).join('');
   },
-  installHTML(all){
-    const open=all.filter(i=>!i.closed);
-    return `<div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <h2 style="margin:0">分期（进行中 ${open.length}）</h2>
-        <button class="btn sm" id="add-install" type="button">新增</button>
+  calHTML(txns){
+    const [y,mo]=this.month.split('-').map(Number);
+    const first=new Date(y,mo-1,1);const startDow=first.getDay();const daysIn=new Date(y,mo,0).getDate();
+    const byDay={};txns.filter(t=>(t.date||'').startsWith(this.month)).forEach(t=>{if(!byDay[t.date])byDay[t.date]={in:0,out:0};byDay[t.date][t.kind==='income'?'in':'out']+=asNum(t.amount,0)});
+    const sel=this.calDate.startsWith(this.month)?this.calDate:this.month+'-01';
+    const selList=txns.filter(t=>t.date===sel).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    const selIn=sumBy(selList.filter(t=>t.kind==='income'),t=>t.amount);
+    const selOut=sumBy(selList.filter(t=>t.kind==='expense'),t=>t.amount);
+    let cells='';
+    for(let i=0;i<startDow;i++)cells+='<div></div>';
+    for(let d=1;d<=daysIn;d++){
+      const ds=this.month+'-'+String(d).padStart(2,'0');
+      const info=byDay[ds]||{in:0,out:0};
+      const isToday=ds===todayStr();const isSel=ds===sel;
+      cells+=`<div class="cal-cell ${isToday?'today':''} ${isSel?'sel':''}" data-cal="${ds}">
+        <div class="d">${d}</div>
+        <div class="m">${info.out?'-'+Math.round(info.out):''}${info.in?' +'+Math.round(info.in):''}</div></div>`;
+    }
+    return`<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <button class="btn sm plain" id="cal-prev" type="button">上月</button>
+        <strong>${this.month}</strong>
+        <button class="btn sm plain" id="cal-next" type="button">下月</button>
       </div>
-      ${all.length===0?'<div class="empty">暂无分期</div>':all.slice().reverse().map(i=>{
-        const paid=(i.paidCount||0)*(i.monthlyAmount||0);
-        const rest=Math.max(0,i.totalAmount-paid);
-        const pct=progressPct(paid,i.totalAmount);
-        return `<div class="row">
-          <div class="grow">
-            <div class="title">${escapeHtml(i.title)} ${i.closed?'<span class="badge">已结清</span>':''}</div>
-            <div class="sub">共 ${i.totalCount} 期 · 每期 ¥${fmtMoney(i.monthlyAmount)} · 已还 ${i.paidCount||0} 期</div>
-            <div class="sub">剩余 ¥${fmtMoney(rest)} / ¥${fmtMoney(i.totalAmount)}</div>
-            <div class="progress expense"><i style="width:${pct}%"></i></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:4px">
-            ${!i.closed?`<button class="btn sm" data-pay-one="${i.id}" type="button">还1期</button>`:''}
-            <button class="del-btn" data-del-finance="${i.id}" data-store="installments" type="button">×</button>
-          </div>
-        </div>`;
-      }).join('')}
+      <div class="cal-head"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+      <div class="cal-grid">${cells}</div>
+    </div>
+    <div class="card">
+      <div class="day-head"><span>${sel}</span><span>收 ${fmtMoney(selIn)} · 支 ${fmtMoney(selOut)}</span></div>
+      ${selList.length===0?'<div class="empty">当天无记录</div>':selList.map(t=>{const cm=catMeta(t.category);return`
+        <div class="row"><div class="cat-icon ${cm.cls}">${cm.ico}</div>
+        <div class="grow"><div class="title">${escapeHtml(t.category)}</div><div class="sub">${escapeHtml(t.note||'')}</div></div>
+        <div class="amount ${t.kind}">${t.kind==='income'?'+':'-'}${fmtMoney(t.amount)}</div></div>`}).join('')}
     </div>`;
   },
-  ledgerHTML(all){
-    const open=all.filter(l=>!l.closed);
-    const borrowSum=sumBy(open.filter(l=>l.direction==='borrow'),l=>Math.max(0,l.amount-(l.repaid||0)));
-    const lendSum=sumBy(open.filter(l=>l.direction==='lend'),l=>Math.max(0,l.amount-(l.repaid||0)));
-    return `
-      <div class="stat-grid">
-        <div class="stat"><div class="label">借入未还</div><div class="value">${fmtMoney(borrowSum)}</div></div>
-        <div class="stat"><div class="label">借出未收</div><div class="value">${fmtMoney(lendSum)}</div></div>
+  bindCal(root,txns){
+    root.querySelectorAll('[data-cal]').forEach(c=>c.addEventListener('click',()=>{this.calDate=c.dataset.cal;App.render()}));
+    const prev=root.querySelector('#cal-prev'),next=root.querySelector('#cal-next');
+    if(prev)prev.addEventListener('click',()=>{const [y,m]=this.month.split('-').map(Number);const d=new Date(y,m-2,1);this.month=monthStr(d);App.render()});
+    if(next)next.addEventListener('click',()=>{const [y,m]=this.month.split('-').map(Number);const d=new Date(y,m,1);this.month=monthStr(d);App.render()});
+  },
+  assetsHTML({accounts,reimburses,invests,installments,ledgers}){
+    const cash=sumBy(accounts,a=>a.balance);
+    const openLed=ledgers.filter(l=>!l.closed);
+    const payable=sumBy(openLed.filter(l=>l.direction==='borrow'),l=>Math.max(0,l.amount-(l.repaid||0)));
+    const receivable=sumBy(openLed.filter(l=>l.direction==='lend'),l=>Math.max(0,l.amount-(l.repaid||0)));
+    const installRest=sumBy(installments.filter(i=>!i.closed),i=>Math.max(0,i.totalAmount-(i.paidCount||0)*(i.monthlyAmount||0)));
+    const debt=payable+installRest;
+    const claimable=sumBy(reimburses.filter(r=>r.status==='claimable'),r=>r.amount);
+    const claimed=sumBy(reimburses.filter(r=>r.status==='done'),r=>r.amount);
+    const investTotal=sumBy(invests,i=>i.amount);
+    const investPnl=sumBy(invests,i=>i.pnl);
+    const net=cash-debt+receivable+investTotal;
+    const totalAsset=cash+receivable+investTotal;
+    return`
+      <div class="card blue">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <div class="k" style="font-size:12px">净资产(元)</div>
+            <div style="font-size:28px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums">${fmtMoney(net)}</div>
+          </div>
+          <div style="text-align:right;font-size:13px;line-height:1.7">
+            <div>总资产 ${fmtMoney(totalAsset)}</div>
+            <div>负资产 ${fmtMoney(debt)}</div>
+          </div>
+        </div>
+      </div>
+      <div class="tri-grid">
+        <div class="tri-card"><div class="t">报销</div>
+          <div class="l">可报: <b>${fmtMoney(claimable)}</b></div>
+          <div class="l">已报: <b>${fmtMoney(claimed)}</b></div></div>
+        <div class="tri-card"><div class="t">债务</div>
+          <div class="l">应付: <b style="color:var(--expense)">${fmtMoney(debt)}</b></div>
+          <div class="l">应收: <b style="color:var(--income)">${fmtMoney(receivable)}</b></div></div>
+        <div class="tri-card"><div class="t">理财</div>
+          <div class="l">总额: <b>${fmtMoney(investTotal)}</b></div>
+          <div class="l">盈亏: <b style="color:${investPnl>=0?'var(--income)':'var(--expense)'}">${fmtMoney(investPnl)}</b></div></div>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <h2 style="margin:0">借贷台账</h2>
-          <button class="btn sm" id="add-ledger" type="button">新增</button>
+          <h2 style="margin:0">资金账户</h2>
+          <div style="display:flex;gap:6px;align-items:center">
+            <strong style="color:var(--income)">${fmtMoney(cash)}</strong>
+            <button class="btn sm ghost" id="add-account" type="button">+</button>
+          </div>
         </div>
-        ${all.length===0?'<div class="empty">暂无记录</div>':all.slice().reverse().map(l=>{
+        ${accounts.length===0?'<div class="empty">暂无账户</div>':accounts.slice().sort((a,b)=>(a.order||0)-(b.order||0)).map(a=>`
+          <div class="row">
+            <div class="cat-icon" style="background:var(--blue-soft)">${a.icon||'💳'}</div>
+            <div class="grow"><div class="title">${escapeHtml(a.name)}</div></div>
+            <div class="amount ${a.balance>=0?'income':'expense'}" style="margin-right:4px">${fmtMoney(a.balance)}</div>
+            <button class="btn sm plain" data-edit-acct="${a.id}" type="button">改</button>
+            <button class="del-btn" data-del-finance="${a.id}" data-store="accounts" type="button">×</button>
+          </div>`).join('')}
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h2 style="margin:0">分期 / 借贷</h2>
+          <div style="display:flex;gap:6px">
+            <button class="btn sm ghost" id="add-install" type="button">+分期</button>
+            <button class="btn sm ghost" id="add-ledger" type="button">+借贷</button>
+          </div>
+        </div>
+        ${installments.slice().reverse().slice(0,5).map(i=>{
+          const paid=(i.paidCount||0)*(i.monthlyAmount||0);const rest=Math.max(0,i.totalAmount-paid);
+          return`<div class="row"><div class="grow">
+            <div class="title">${escapeHtml(i.title)} ${i.closed?'<span class="badge">已结清</span>':''}</div>
+            <div class="sub">剩余 ¥${fmtMoney(rest)} · ${i.paidCount||0}/${i.totalCount}期</div>
+            <div class="progress expense"><i style="width:${progressPct(paid,i.totalAmount)}%"></i></div>
+          </div>${!i.closed?`<button class="btn sm" data-pay-one="${i.id}" type="button">还1期</button>`:''}
+          <button class="del-btn" data-del-finance="${i.id}" data-store="installments" type="button">×</button></div>`}).join('')}
+        ${ledgers.slice().reverse().slice(0,5).map(l=>{
           const rest=Math.max(0,l.amount-(l.repaid||0));
-          return `<div class="row">
-            <div class="grow">
-              <div class="title">${l.direction==='borrow'?'借入':'借出'} · ${escapeHtml(l.party)} ${l.closed?'<span class="badge">已结清</span>':''}</div>
-              <div class="sub">${l.date}${l.dueDate?' → '+l.dueDate:''} · 未结 ¥${fmtMoney(rest)}</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px">
-              ${!l.closed?`<button class="btn sm ghost" data-repay="${l.id}" type="button">还款</button>`:''}
-              <button class="del-btn" data-del-finance="${l.id}" data-store="ledgers" type="button">×</button>
-            </div>
-          </div>`;
-        }).join('')}
+          return`<div class="row"><div class="grow">
+            <div class="title">${l.direction==='borrow'?'借入':'借出'} · ${escapeHtml(l.party)} ${l.closed?'<span class="badge">已结清</span>':''}</div>
+            <div class="sub">未结 ¥${fmtMoney(rest)}</div>
+          </div>${!l.closed?`<button class="btn sm ghost" data-repay="${l.id}" type="button">还款</button>`:''}
+          <button class="del-btn" data-del-finance="${l.id}" data-store="ledgers" type="button">×</button></div>`}).join('')}
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h2 style="margin:0">报销</h2>
+          <button class="btn sm ghost" id="add-reimb" type="button">+报销</button>
+        </div>
+        ${reimburses.length===0?'<div class="empty">暂无报销</div>':reimburses.slice().reverse().map(r=>`
+          <div class="row"><div class="grow">
+            <div class="title">${escapeHtml(r.title)} ${r.status==='done'?'<span class="badge">已报</span>':'<span class="badge">可报</span>'}</div>
+            <div class="sub">${r.date}${r.note?' · '+escapeHtml(r.note):''}</div>
+          </div>
+          <div class="amount">${fmtMoney(r.amount)}</div>
+          ${r.status!=='done'?`<button class="btn sm" data-settle-reimb="${r.id}" type="button">标记已报</button>`:''}
+          <button class="del-btn" data-del-finance="${r.id}" data-store="reimburses" type="button">×</button></div>`).join('')}
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h2 style="margin:0">理财</h2>
+          <button class="btn sm ghost" id="add-invest" type="button">+理财</button>
+        </div>
+        ${invests.length===0?'<div class="empty">暂无理财</div>':invests.slice().reverse().map(v=>`
+          <div class="row"><div class="grow">
+            <div class="title">${escapeHtml(v.name)}</div>
+            <div class="sub">${v.date}${v.note?' · '+escapeHtml(v.note):''}</div>
+          </div>
+          <div class="amount">${fmtMoney(v.amount)}</div>
+          <div class="amount ${v.pnl>=0?'income':'expense'}">${v.pnl>=0?'+':''}${fmtMoney(v.pnl)}</div>
+          <button class="del-btn" data-del-finance="${v.id}" data-store="invests" type="button">×</button></div>`).join('')}
       </div>`;
   },
-  statHTML(monthTx){
+  bindAssets(root){
+    const ai=root.querySelector('#add-install');if(ai)ai.addEventListener('click',()=>this.openInstall());
+    const al=root.querySelector('#add-ledger');if(al)al.addEventListener('click',()=>this.openLedger());
+    const aa=root.querySelector('#add-account');if(aa)aa.addEventListener('click',()=>this.openAccount());
+    const ar=root.querySelector('#add-reimb');if(ar)ar.addEventListener('click',()=>this.openReimb());
+    const av=root.querySelector('#add-invest');if(av)av.addEventListener('click',()=>this.openInvest());
+    root.querySelectorAll('[data-edit-acct]').forEach(b=>b.addEventListener('click',()=>this.openAccount(b.dataset.editAcct)));
+  },
+  statHTML(monthTx,m){
     const expenseTx=monthTx.filter(t=>t.kind==='expense');
     const incomeTx=monthTx.filter(t=>t.kind==='income');
-    const byCat={};
-    expenseTx.forEach(t=>{
-      if(!byCat[t.category]) byCat[t.category]={amount:0,count:0};
-      byCat[t.category].amount+=asNum(t.amount,0);
-      byCat[t.category].count++;
-    });
+    const byCat={};expenseTx.forEach(t=>{if(!byCat[t.category])byCat[t.category]={amount:0,count:0};byCat[t.category].amount+=asNum(t.amount,0);byCat[t.category].count++});
     const totalOut=sumBy(expenseTx,t=>t.amount);
     const cats=Object.entries(byCat).sort((a,b)=>b[1].amount-a[1].amount);
-    return `
+    return`
       <div class="card">
-        <h2>支出分类占比</h2>
-        ${cats.length===0?'<div class="empty">本月无支出</div>':cats.map(([name,v])=>{
-          const pct=totalOut?Math.round(v.amount/totalOut*1000)/10:0;
-          const cm=catMeta(name);
-          return `<div class="row">
-            <div class="cat-icon ${cm.cls}">${cm.ico}</div>
-            <div class="grow">
-              <div class="title">${escapeHtml(name)} <span style="color:var(--muted);font-weight:400;font-size:12px">${v.count}笔 · ${pct}%</span></div>
-              <div class="progress expense" style="margin-top:6px"><i style="width:${pct}%"></i></div>
-            </div>
-            <div class="amount expense">-${fmtMoney(v.amount)}</div>
-          </div>`;
-        }).join('')}
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h2 style="margin:0">收支统计</h2>
+          <div class="seg" style="width:180px;margin:0">
+            <button type="button" data-sk="expense" class="${this.statKind==='expense'?'active':''}">支出</button>
+            <button type="button" data-sk="income" class="${this.statKind==='income'?'active':''}">收入</button>
+            <button type="button" data-sk="balance" class="${this.statKind==='balance'?'active':''}">结余</button>
+          </div>
+        </div>
+        <div class="chart-wrap"><canvas id="fin-chart" width="760" height="320"></canvas></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h2 style="margin:0">支出占比</h2>
+          <div class="seg" style="width:140px;margin:0">
+            <button type="button" data-pk="expense" class="active">支出</button>
+            <button type="button" data-pk="income">收入</button>
+          </div>
+        </div>
+        <div id="pie-list">
+          ${this.catListHTML(cats,totalOut,'expense')}
+        </div>
       </div>
       <div class="card">
         <h2>本月概览</h2>
         <div class="row"><div class="grow"><div class="title">支出笔数</div></div><div>${expenseTx.length}</div></div>
         <div class="row"><div class="grow"><div class="title">收入笔数</div></div><div>${incomeTx.length}</div></div>
-        <div class="row"><div class="grow"><div class="title">日均支出</div></div><div>${fmtMoney(totalOut/Math.max(1,new Date(Number(this.month.slice(0,4)),Number(this.month.slice(5,7)),0).getDate()))}</div></div>
-      </div>
-      <div class="chart-wrap" style="background:var(--card);border-radius:16px;padding:12px;height:200px">
-        <canvas id="fin-chart" width="760" height="320"></canvas>
-      </div>
-    `;
+        <div class="row"><div class="grow"><div class="title">日均支出</div></div><div>${fmtMoney(totalOut/Math.max(1,new Date(Number(m.slice(0,4)),Number(m.slice(5,7)),0).getDate()))}</div></div>
+      </div>`;
+  },
+  catListHTML(cats,total,kind){
+    if(!cats.length)return'<div class="empty">暂无数据</div>';
+    return cats.map(([name,v])=>{
+      const pct=total?Math.round(v.amount/total*1000)/10:0;const cm=catMeta(name);
+      return`<div class="row"><div class="cat-icon ${cm.cls}">${cm.ico}</div>
+        <div class="grow"><div class="title">${escapeHtml(name)} <span style="color:var(--muted);font-weight:400;font-size:12px">${v.count}笔 · ${pct}%</span></div>
+        <div class="progress ${kind==='expense'?'expense':''}" style="margin-top:6px"><i style="width:${pct}%;${kind==='income'?'background:var(--income)':''}"></i></div></div>
+        <div class="amount ${kind}">${kind==='income'?'+':'-'}${fmtMoney(v.amount)}</div></div>`}).join('');
+  },
+  drawStat(root,txns){
+    root.querySelectorAll('[data-sk]').forEach(b=>b.addEventListener('click',()=>{this.statKind=b.dataset.sk;App.render()}));
+    root.querySelectorAll('[data-pk]').forEach(b=>b.addEventListener('click',()=>{
+      root.querySelectorAll('[data-pk]').forEach(x=>x.classList.toggle('active',x===b));
+      const kind=b.dataset.pk;
+      const list=txns.filter(t=>(t.date||'').startsWith(this.month)&&t.kind===kind);
+      const byCat={};list.forEach(t=>{if(!byCat[t.category])byCat[t.category]={amount:0,count:0};byCat[t.category].amount+=asNum(t.amount,0);byCat[t.category].count++});
+      const cats=Object.entries(byCat).sort((a,b2)=>b2[1].amount-a[1].amount);
+      const total=sumBy(list,t=>t.amount);
+      root.querySelector('#pie-list').innerHTML=this.catListHTML(cats,total,kind);
+    }));
+    const canvas=root.querySelector('#fin-chart');
+    if(canvas)this.drawFinChart(canvas,txns,this.month,this.statKind);
+  },
+  drawFinChart(canvas,txns,month,kind){
+    const ctx=canvas.getContext('2d');const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
+    const days=new Date(Number(month.slice(0,4)),Number(month.slice(5,7)),0).getDate();
+    const vals=[];
+    for(let d=1;d<=days;d++){
+      const ds=month+'-'+String(d).padStart(2,'0');
+      const dayTx=txns.filter(t=>t.date===ds);
+      if(kind==='income')vals.push(sumBy(dayTx.filter(t=>t.kind==='income'),t=>t.amount));
+      else if(kind==='balance')vals.push(sumBy(dayTx.filter(t=>t.kind==='income'),t=>t.amount)-sumBy(dayTx.filter(t=>t.kind==='expense'),t=>t.amount));
+      else vals.push(sumBy(dayTx.filter(t=>t.kind==='expense'),t=>t.amount));
+    }
+    const max=Math.max(1,...vals.map(Math.abs));
+    const padL=36,padR=10,padT=16,padB=28;const cw=(w-padL-padR)/vals.length;
+    const color=kind==='income'?'#3DBFA3':kind==='balance'?'#5BA8E0':'#EF6B6B';
+    vals.forEach((v,i)=>{
+      const bh=(Math.abs(v)/max)*(h-padT-padB);
+      const x=padL+i*cw+cw*0.2,y=h-padB-(v>=0?bh:0),bw=Math.max(3,cw*0.6);
+      ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,v>=0?y:h-padB,bw,Math.max(v?3:0,bh),3);ctx.fill();
+    });
+    ctx.fillStyle='#8A9399';ctx.font='16px sans-serif';ctx.textAlign='center';
+    ctx.fillText(month.slice(5)+'月 '+(kind==='income'?'收入':kind==='balance'?'结余':'支出')+'趋势',w/2,h-6);
   },
   openTxn(){
-    App.openModal(`
-      <h3>记一笔</h3>
-      <div class="seg" id="txn-kind">
-        <button type="button" data-kind="expense" class="active">支出</button>
-        <button type="button" data-kind="income">收入</button>
-      </div>
+    App.openModal(`<h3>记一笔</h3>
+      <div class="seg" id="txn-kind"><button type="button" data-kind="expense" class="active">支出</button><button type="button" data-kind="income">收入</button></div>
       <div class="form-row"><label>金额</label><input class="field" id="t-amount" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" /></div>
-      <div class="form-row"><label>分类</label>
-        <div class="chips" id="t-cats">
-          ${Object.keys(CAT_META).filter(c=>!['分期','借贷'].includes(c)).map((c,i)=>
-            `<button class="chip ${i===0?'active':''}" data-cat="${c}" type="button">${CAT_META[c].ico} ${c}</button>`).join('')}
-        </div>
-      </div>
+      <div class="form-row"><label>分类</label><div class="chips" id="t-cats">
+        ${Object.keys(CAT_META).map((c,i)=>`<button class="chip ${i===0?'active':''}" data-cat="${c}" type="button">${CAT_META[c].ico} ${c}</button>`).join('')}
+      </div></div>
+      <div class="form-row"><label>账户</label><select class="field" id="t-acct"></select></div>
       <div class="form-row"><label>备注</label><input class="field" id="t-note" placeholder="可选" /></div>
       <div class="form-row"><label>日期</label><input class="field" id="t-date" type="date" value="${todayStr()}" /></div>
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="t-save" type="button">保存</button>
-      </div>
-    `,(modal)=>{
-      let kind='expense', category='餐饮';
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="t-save" type="button">保存</button></div>
+    `,async modal=>{
+      let kind='expense',category='餐饮';
+      const acctSel=modal.querySelector('#t-acct');
+      const accounts=await getAll('accounts');
+      acctSel.innerHTML=accounts.map(a=>`<option value="${escapeHtml(a.name)}">${escapeHtml(a.name)}</option>`).join('')||'<option value="默认">默认</option>';
       modal.querySelectorAll('#txn-kind button').forEach(b=>b.addEventListener('click',()=>{
-        kind=b.dataset.kind;
-        modal.querySelectorAll('#txn-kind button').forEach(x=>x.classList.toggle('active',x===b));
-      }));
+        kind=b.dataset.kind;modal.querySelectorAll('#txn-kind button').forEach(x=>x.classList.toggle('active',x===b))}));
       modal.querySelectorAll('#t-cats .chip').forEach(b=>b.addEventListener('click',()=>{
-        category=b.dataset.cat;
-        modal.querySelectorAll('#t-cats .chip').forEach(x=>x.classList.toggle('active',x===b));
-      }));
+        category=b.dataset.cat;modal.querySelectorAll('#t-cats .chip').forEach(x=>x.classList.toggle('active',x===b))}));
       modal.querySelector('#t-save').addEventListener('click',async()=>{
         const amount=parseAmount(modal.querySelector('#t-amount').value);
         const note=modal.querySelector('#t-note').value.trim();
         const date=modal.querySelector('#t-date').value||todayStr();
-        if(amount===null||amount<=0) return App.toast('请输入有效金额');
-        await put('txns',{id:uid(),kind,amount,category,account:'默认',note,date,createdAt:Date.now()});
-        this.month=date.slice(0,7);
-        App.closeModal(); App.toast('已记账'); App.render();
+        const account=acctSel.value||'默认';
+        if(amount===null||amount<=0)return App.toast('请输入有效金额');
+        await put('txns',{id:uid(),kind,amount,category,account,note,date,createdAt:Date.now()});
+        // adjust account balance
+        const acct=accounts.find(a=>a.name===account);
+        if(acct){acct.balance=asNum(acct.balance,0)+(kind==='income'?amount:-amount);await put('accounts',acct)}
+        this.month=date.slice(0,7);App.closeModal();App.toast('已记账');App.render();
       });
     });
   },
   openInstall(){
-    App.openModal(`
-      <h3>新增分期</h3>
+    App.openModal(`<h3>新增分期</h3>
       <div class="form-row"><label>名称</label><input class="field" id="i-title" placeholder="如：手机分期" /></div>
       <div class="form-row"><label>总额</label><input class="field" id="i-total" type="number" inputmode="decimal" min="0" step="0.01" /></div>
       <div class="form-row"><label>期数</label><input class="field" id="i-count" type="number" inputmode="numeric" min="1" step="1" /></div>
       <div class="form-row"><label>每期金额</label><input class="field" id="i-monthly" type="number" inputmode="decimal" min="0" step="0.01" /></div>
       <div class="form-row"><label>开始日期</label><input class="field" id="i-start" type="date" value="${todayStr()}" /></div>
       <div class="form-row"><label>已还期数</label><input class="field" id="i-paid" type="number" inputmode="numeric" min="0" step="1" value="0" /></div>
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="i-save" type="button">保存</button>
-      </div>
-    `,(modal)=>{
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="i-save" type="button">保存</button></div>
+    `,modal=>{
       modal.querySelector('#i-save').addEventListener('click',async()=>{
         const title=modal.querySelector('#i-title').value.trim();
         const totalAmount=parseAmount(modal.querySelector('#i-total').value);
@@ -1212,46 +964,90 @@ const FinanceModule={
         let monthlyAmount=parseAmount(modal.querySelector('#i-monthly').value);
         const startDate=modal.querySelector('#i-start').value||todayStr();
         const paidCount=parseInt(modal.querySelector('#i-paid').value,10)||0;
-        if(!title||!totalAmount||totalAmount<=0||!totalCount||totalCount<1) return App.toast('请填写完整');
-        if(!monthlyAmount||monthlyAmount<=0) monthlyAmount=Math.round((totalAmount/totalCount)*100)/100;
+        if(!title||!totalAmount||totalAmount<=0||!totalCount||totalCount<1)return App.toast('请填写完整');
+        if(!monthlyAmount||monthlyAmount<=0)monthlyAmount=Math.round((totalAmount/totalCount)*100)/100;
         await put('installments',{id:uid(),title,totalAmount,paidCount:Math.min(paidCount,totalCount),totalCount,monthlyAmount,startDate,note:'',closed:paidCount>=totalCount});
-        App.closeModal(); App.toast('分期已添加'); App.render();
+        App.closeModal();App.toast('分期已添加');App.render();
       });
     });
   },
   openLedger(){
-    App.openModal(`
-      <h3>新增借贷</h3>
-      <div class="seg" id="l-dir">
-        <button type="button" data-dir="borrow" class="active">借入</button>
-        <button type="button" data-dir="lend">借出</button>
-      </div>
+    App.openModal(`<h3>新增借贷</h3>
+      <div class="seg" id="l-dir"><button type="button" data-dir="borrow" class="active">借入</button><button type="button" data-dir="lend">借出</button></div>
       <div class="form-row"><label>对方</label><input class="field" id="l-party" placeholder="姓名 / 平台" /></div>
       <div class="form-row"><label>金额</label><input class="field" id="l-amount" type="number" inputmode="decimal" min="0" step="0.01" /></div>
       <div class="form-row"><label>日期</label><input class="field" id="l-date" type="date" value="${todayStr()}" /></div>
       <div class="form-row"><label>约定归还日（可选）</label><input class="field" id="l-due" type="date" /></div>
       <div class="form-row"><label>已还 / 已收</label><input class="field" id="l-repaid" type="number" inputmode="decimal" min="0" step="0.01" value="0" /></div>
-      <div class="form-row"><label>备注</label><input class="field" id="l-note" placeholder="可选" /></div>
-      <div class="form-actions">
-        <button class="btn plain" data-close type="button">取消</button>
-        <button class="btn" id="l-save" type="button">保存</button>
-      </div>
-    `,(modal)=>{
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="l-save" type="button">保存</button></div>
+    `,modal=>{
       let direction='borrow';
       modal.querySelectorAll('#l-dir button').forEach(b=>b.addEventListener('click',()=>{
-        direction=b.dataset.dir;
-        modal.querySelectorAll('#l-dir button').forEach(x=>x.classList.toggle('active',x===b));
-      }));
+        direction=b.dataset.dir;modal.querySelectorAll('#l-dir button').forEach(x=>x.classList.toggle('active',x===b))}));
       modal.querySelector('#l-save').addEventListener('click',async()=>{
         const party=modal.querySelector('#l-party').value.trim();
         const amount=parseAmount(modal.querySelector('#l-amount').value);
         const date=modal.querySelector('#l-date').value||todayStr();
         const dueDate=modal.querySelector('#l-due').value||'';
         const repaid=parseAmount(modal.querySelector('#l-repaid').value)||0;
-        const note=modal.querySelector('#l-note').value.trim();
-        if(!party||amount===null||amount<=0) return App.toast('请填写完整');
-        await put('ledgers',{id:uid(),direction,party,amount,date,dueDate,repaid:Math.min(repaid,amount),note,closed:repaid>=amount});
-        App.closeModal(); App.toast('已保存'); App.render();
+        if(!party||amount===null||amount<=0)return App.toast('请填写完整');
+        await put('ledgers',{id:uid(),direction,party,amount,date,dueDate,repaid:Math.min(repaid,amount),note:'',closed:repaid>=amount});
+        App.closeModal();App.toast('已保存');App.render();
+      });
+    });
+  },
+  openAccount(id){
+    App.openModal(`<h3>${id?'编辑账户':'新增账户'}</h3>
+      <div class="form-row"><label>名称</label><input class="field" id="a-name" maxlength="20" placeholder="如：招商银行" /></div>
+      <div class="form-row"><label>图标</label><div class="chips" id="a-icons">
+        ${['💵','💬','🅰️','💳','🏦','⭐','💰','🪙'].map((ic,i)=>`<button class="chip ${i===0?'active':''}" data-ic="${ic}" type="button">${ic}</button>`).join('')}
+      </div></div>
+      <div class="form-row"><label>余额</label><input class="field" id="a-bal" type="number" inputmode="decimal" step="0.01" value="0" /></div>
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="a-save" type="button">保存</button></div>
+    `,async modal=>{
+      let icon='💵';
+      if(id){const a=await getById('accounts',id);if(a){modal.querySelector('#a-name').value=a.name;modal.querySelector('#a-bal').value=a.balance;icon=a.icon||'💵';
+        modal.querySelectorAll('#a-icons .chip').forEach(c=>c.classList.toggle('active',c.dataset.ic===icon))}}
+      modal.querySelectorAll('#a-icons .chip').forEach(c=>c.addEventListener('click',()=>{
+        icon=c.dataset.ic;modal.querySelectorAll('#a-icons .chip').forEach(x=>x.classList.toggle('active',x===c))}));
+      modal.querySelector('#a-save').addEventListener('click',async()=>{
+        const name=modal.querySelector('#a-name').value.trim();const balance=parseAmount(modal.querySelector('#a-bal').value)||0;
+        if(!name)return App.toast('请输入名称');
+        if(id){const a=await getById('accounts',id);a.name=name;a.icon=icon;a.balance=balance;await put('accounts',a)}
+        else await put('accounts',{id:uid(),name,icon,balance,type:'cash',order:Date.now()%10000});
+        App.closeModal();App.toast('已保存');App.render();
+      });
+    });
+  },
+  openReimb(){
+    App.openModal(`<h3>新增报销</h3>
+      <div class="form-row"><label>事由</label><input class="field" id="r-title" maxlength="40" placeholder="如：差旅报销" /></div>
+      <div class="form-row"><label>金额</label><input class="field" id="r-amount" type="number" inputmode="decimal" min="0" step="0.01" /></div>
+      <div class="form-row"><label>状态</label><select class="field" id="r-status"><option value="claimable">可报</option><option value="done">已报</option></select></div>
+      <div class="form-row"><label>日期</label><input class="field" id="r-date" type="date" value="${todayStr()}" /></div>
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="r-save" type="button">保存</button></div>
+    `,modal=>{
+      modal.querySelector('#r-save').addEventListener('click',async()=>{
+        const title=modal.querySelector('#r-title').value.trim();const amount=parseAmount(modal.querySelector('#r-amount').value);
+        if(!title||amount===null||amount<=0)return App.toast('请填写完整');
+        await put('reimburses',{id:uid(),title,amount,status:modal.querySelector('#r-status').value,date:modal.querySelector('#r-date').value||todayStr(),note:'',createdAt:Date.now()});
+        App.closeModal();App.toast('已保存');App.render();
+      });
+    });
+  },
+  openInvest(){
+    App.openModal(`<h3>新增理财</h3>
+      <div class="form-row"><label>名称</label><input class="field" id="v-name" maxlength="30" placeholder="如：基金 / 存款" /></div>
+      <div class="form-row"><label>金额</label><input class="field" id="v-amount" type="number" inputmode="decimal" min="0" step="0.01" /></div>
+      <div class="form-row"><label>盈亏</label><input class="field" id="v-pnl" type="number" inputmode="decimal" step="0.01" value="0" /></div>
+      <div class="form-actions"><button class="btn plain" data-close type="button">取消</button><button class="btn" id="v-save" type="button">保存</button></div>
+    `,modal=>{
+      modal.querySelector('#v-save').addEventListener('click',async()=>{
+        const name=modal.querySelector('#v-name').value.trim();const amount=parseAmount(modal.querySelector('#v-amount').value);
+        const pnl=parseAmount(modal.querySelector('#v-pnl').value)||0;
+        if(!name||amount===null||amount<=0)return App.toast('请填写完整');
+        await put('invests',{id:uid(),name,amount,pnl,note:'',date:todayStr(),createdAt:Date.now()});
+        App.closeModal();App.toast('已保存');App.render();
       });
     });
   }
@@ -1260,19 +1056,15 @@ const FinanceModule={
 /* ========== Settings ========== */
 const SettingsModule={
   async render(root){
-    const counts={};
-    for(const s of DATA_KEYS) counts[s]=(await getAll(s)).length;
+    const counts={};for(const s of DATA_KEYS)counts[s]=(await getAll(s)).length;
     root.innerHTML=`
-      <div class="card">
-        <h2>数据概况</h2>
-        <div class="row"><div class="grow"><div class="title">技能</div></div><div class="sub">${counts.skills}</div></div>
-        <div class="row"><div class="grow"><div class="title">学习记录</div></div><div class="sub">${counts.studyLogs}</div></div>
+      <div class="card"><h2>数据概况</h2>
+        <div class="row"><div class="grow"><div class="title">技能 / 学习</div></div><div class="sub">${counts.skills} / ${counts.studyLogs}</div></div>
         <div class="row"><div class="grow"><div class="title">运动记录</div></div><div class="sub">${counts.fitnessLogs}</div></div>
-        <div class="row"><div class="grow"><div class="title">账目</div></div><div class="sub">${counts.txns}</div></div>
-        <div class="row"><div class="grow"><div class="title">分期 / 借贷</div></div><div class="sub">${counts.installments} / ${counts.ledgers}</div></div>
+        <div class="row"><div class="grow"><div class="title">账目 / 账户</div></div><div class="sub">${counts.txns} / ${counts.accounts}</div></div>
+        <div class="row"><div class="grow"><div class="title">分期 / 借贷 / 报销 / 理财</div></div><div class="sub">${counts.installments} / ${counts.ledgers} / ${counts.reimburses} / ${counts.invests}</div></div>
       </div>
-      <div class="card">
-        <h2>备份与迁移</h2>
+      <div class="card"><h2>备份与迁移</h2>
         <p class="hint" style="margin:0 0 12px">数据保存在本机浏览器。换设备先导出 JSON，再在新设备导入。</p>
         <button class="btn block" id="btn-export" type="button">导出备份 JSON</button>
         <div style="height:8px"></div>
@@ -1284,86 +1076,43 @@ const SettingsModule={
         </div>
         <button class="btn danger block" id="btn-wipe" type="button">清空全部数据</button>
       </div>
-      <div class="card">
-        <h2>安装到桌面</h2>
+      <div class="card"><h2>安装到桌面</h2>
         <p class="hint" style="margin:0"><strong>Android Chrome：</strong>菜单 →「安装应用」。<br/><strong>iOS Safari：</strong>分享 →「添加到主屏幕」。</p>
       </div>
-      <div class="card">
-        <h2>关于</h2>
-        <div class="hint">工作台 v2 · 学习 / 运动 / 账本 · 本地优先<br/>账本视觉参考一木记账（白底薄荷绿）</div>
+      <div class="card"><h2>关于</h2>
+        <div class="hint">工作台 v3 · 学习 / 运动 / 账本 · 蓝色主题<br/>账本对齐一木记账：流水 / 日历 / 资产 / 统计</div>
       </div>
     `;
     let importMode='merge';
     root.querySelectorAll('#import-mode button').forEach(b=>b.addEventListener('click',()=>{
-      importMode=b.dataset.mode;
-      root.querySelectorAll('#import-mode button').forEach(x=>x.classList.toggle('active',x===b));
-    }));
+      importMode=b.dataset.mode;root.querySelectorAll('#import-mode button').forEach(x=>x.classList.toggle('active',x===b))}));
     root.querySelector('#btn-export').addEventListener('click',async()=>{
       try{
         const payload=await exportAll();
         const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-        const a=document.createElement('a');
-        a.href=URL.createObjectURL(blob);
+        const a=document.createElement('a');a.href=URL.createObjectURL(blob);
         a.download='workbench-backup-'+todayStr()+'.json';
-        document.body.appendChild(a); a.click(); a.remove();
-        URL.revokeObjectURL(a.href);
-        App.toast('已导出');
-      }catch(e){ App.toast('导出失败'); }
+        document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);App.toast('已导出');
+      }catch(e){App.toast('导出失败')}
     });
     const fileInput=root.querySelector('#import-file');
     root.querySelector('#btn-import').addEventListener('click',()=>fileInput.click());
     fileInput.addEventListener('change',async()=>{
-      const file=fileInput.files&&fileInput.files[0]; if(!file) return;
+      const file=fileInput.files&&fileInput.files[0];if(!file)return;
       try{
-        const text=await file.text();
-        const payload=JSON.parse(text);
-        if(importMode==='overwrite'&&!confirm('覆盖会先清空现有数据，确定？')){ fileInput.value=''; return; }
-        await importAll(payload,importMode);
-        App.toast('导入成功'); App.render();
-      }catch(e){ App.toast('备份文件格式不正确'); }
-      finally{ fileInput.value=''; }
+        const payload=JSON.parse(await file.text());
+        if(importMode==='overwrite'&&!confirm('覆盖会先清空现有数据，确定？')){fileInput.value='';return}
+        await importAll(payload,importMode);App.toast('导入成功');App.render();
+      }catch(e){App.toast('备份文件格式不正确')}
+      finally{fileInput.value=''}
     });
     root.querySelector('#btn-wipe').addEventListener('click',async()=>{
-      if(!confirm('将删除本机全部数据，确定？')) return;
-      if(!confirm('再次确认清空？')) return;
-      await wipeAll(); App.toast('已清空'); App.render();
+      if(!confirm('将删除本机全部数据，确定？'))return;
+      if(!confirm('再次确认清空？'))return;
+      await wipeAll();await seedDefaults();App.toast('已清空');App.render();
     });
   }
 };
-
-/* ========== boot ========== */
-// finance stat chart after render
-const _origRender=FinanceModule.render.bind(FinanceModule);
-FinanceModule.render=async function(root){
-  await _origRender(root);
-  const canvas=root.querySelector('#fin-chart');
-  if(canvas) drawFinanceChart(canvas, this.month);
-};
-function drawFinanceChart(canvas, month){
-  // fill after data load
-  getAll('txns').then(txns=>{
-    const ctx=canvas.getContext('2d');
-    const w=canvas.width,h=canvas.height;
-    ctx.clearRect(0,0,w,h);
-    const days=new Date(Number(month.slice(0,4)), Number(month.slice(5,7)), 0).getDate();
-    const vals=[];
-    for(let d=1;d<=days;d++){
-      const ds=month+'-'+String(d).padStart(2,'0');
-      vals.push(sumBy(txns.filter(t=>t.date===ds&&t.kind==='expense'),t=>t.amount));
-    }
-    const max=Math.max(1,...vals);
-    const padL=36,padR=10,padT=16,padB=28;
-    const cw=(w-padL-padR)/vals.length;
-    vals.forEach((v,i)=>{
-      const bh=(v/max)*(h-padT-padB);
-      const x=padL+i*cw+cw*0.2, y=h-padB-bh, bw=Math.max(3,cw*0.6);
-      ctx.fillStyle='#EF6B6B';
-      ctx.beginPath(); ctx.roundRect(x,y,bw,Math.max(v?3:0,bh),3); ctx.fill();
-    });
-    ctx.fillStyle='#8A9399'; ctx.font='16px sans-serif'; ctx.textAlign='center';
-    ctx.fillText(month.slice(5)+'月每日支出', w/2, h-6);
-  });
-}
 
 document.addEventListener('DOMContentLoaded',()=>App.init());
 </script>
