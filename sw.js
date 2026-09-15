@@ -1,14 +1,7 @@
-const CACHE = 'workbench-v2';
+const CACHE = 'workbench-v3';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css',
-  './js/app.js',
-  './js/db.js',
-  './js/modules/todo.js',
-  './js/modules/fitness.js',
-  './js/modules/finance.js',
-  './js/modules/settings.js',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png'
@@ -31,7 +24,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
-
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
