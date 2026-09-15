@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <meta name="description" content="待办 · 运动 · 记账，本地优先的手机工作台" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="工作台" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="css/app.css" />
+  <title>工作台</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1 id="page-title">待办</h1>
+      <button class="icon-btn" id="btn-settings" type="button" aria-label="设置">⚙</button>
+    </header>
+    <main class="main" id="main"></main>
+    <nav class="tabbar" aria-label="主导航">
+      <button class="tab active" data-route="todo" type="button">
+        <span class="ico">✓</span><span>待办</span>
+      </button>
+      <button class="tab" data-route="fitness" type="button">
+        <span class="ico">◎</span><span>运动</span>
+      </button>
+      <button class="tab" data-route="finance" type="button">
+        <span class="ico">¥</span><span>账本</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/modules/todo.js"></script>
+  <script src="js/modules/fitness.js"></script>
+  <script src="js/modules/finance.js"></script>
+  <script src="js/modules/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
