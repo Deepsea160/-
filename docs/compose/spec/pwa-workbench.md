@@ -3,7 +3,7 @@ feature: pwa-workbench
 status: delivered
 updated: 2026-09-15
 branch: feature/pwa-workbench
-commits: 
+commits: 82d6b6a..82d6b6a
 ---
 
 # 手机工作台 PWA
